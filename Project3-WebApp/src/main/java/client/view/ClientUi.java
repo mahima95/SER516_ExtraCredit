@@ -87,6 +87,7 @@ public class ClientUi extends JFrame implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
+		//initialize(expressiveController.expressiveView, affectiveController.affectiveView);
 		FaceData faceData = (FaceData) arg;
 		this.expressiveController.updateTime(faceData);
 		this.expressiveController.updateGraph(faceData.getFaceExpressionData());

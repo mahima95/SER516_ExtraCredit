@@ -122,10 +122,6 @@ public class ExpressiveController {
 		rgtSmirkGraph.add(g10, BorderLayout.CENTER);
 		laughGraph.add(g11, BorderLayout.CENTER);
 		
-		//Thread to make sure that the graphs keeps plotting the points.
-		t = new Thread(new Runnable() {
-			public void run() {
-				while (flag) {
 					g.addValues(v[8]);
 					g1.addValues(v[10]);
 					g2.addValues(v[9]);
@@ -138,37 +134,17 @@ public class ExpressiveController {
 					g9.addValues(v[5]);
 					g10.addValues(v[6]);
 					g11.addValues(v[7]);
-					facePanel.repaint();
-					blinkGraph.repaint();
-					rgtWinkGraph.repaint();
-					lftWinkGraph.repaint();
-					lookrgtGraph.repaint();
-					looklftGraph.repaint();
-					furrowGraph.repaint();
-					raiseGraph.repaint();
-					smileGraph.repaint();
-					clenchGraph.repaint();
-					lftSmirkGraph.repaint();
-					rgtSmirkGraph.repaint();
-					laughGraph.repaint();
-					try {
-				 		Thread.sleep(1000);
-				 	} catch (InterruptedException e) {
-				 		e.printStackTrace();
-				 	}
-				}
+					
+					panelRepaint();
+				
+				
 			}
-		
-		 });
-
-	}
 	
 	/**
 	 * Updates the Face and the Graph on the basis of received values
 	 * @param fed Contains the latest expression values
 	 */
 	public void updateGraph(FaceExpressionData fed) {
-		flag = false;
 		v = fed.fetchVectors();
 		f.changeVector(v);
 		g.addValues(v[8]);
@@ -183,12 +159,7 @@ public class ExpressiveController {
 		g9.addValues(v[5]);
 		g10.addValues(v[6]);
 		g11.addValues(v[7]);
-		flag = true;
-		try{
-			t.start();
-		}catch(Exception e){
-			
-		}				
+		panelRepaint();
 	}
 	
 	/**
@@ -197,6 +168,22 @@ public class ExpressiveController {
 	 */
 	public void updateTime(FaceData data){
 		timeValue.setText(data.getTimeElapsed().toString());
+	}
+	
+	private void panelRepaint() {
+		facePanel.repaint();
+		blinkGraph.repaint();
+		rgtWinkGraph.repaint();
+		lftWinkGraph.repaint();
+		lookrgtGraph.repaint();
+		looklftGraph.repaint();
+		furrowGraph.repaint();
+		raiseGraph.repaint();
+		smileGraph.repaint();
+		clenchGraph.repaint();
+		lftSmirkGraph.repaint();
+		rgtSmirkGraph.repaint();
+		laughGraph.repaint();
 	}
 
 }

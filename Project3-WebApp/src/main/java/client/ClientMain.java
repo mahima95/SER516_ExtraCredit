@@ -18,6 +18,8 @@ public class ClientMain {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					Thread t = new Thread();
+					t.start();
 					new ClientController();
 				} catch (Exception e) {
 					e.printStackTrace();
