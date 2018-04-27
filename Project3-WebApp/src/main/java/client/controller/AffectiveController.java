@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 /**
  * Controller for the Affective View
  * 
- * @SER516 Project3_Team03
+ * @SER516 SER516_ExtraCredit 
  * @version 1.0
  */
 public class AffectiveController {

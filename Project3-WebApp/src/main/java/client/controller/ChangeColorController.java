@@ -9,12 +9,18 @@ import utility.Constants;
 /**
  * Controller for changing the color of the graph
  * 
- * @SER516 Project3_Team03
+ * @SER516 SER516_ExtraCredit
  * @version 1.0
  */
 public class ChangeColorController {
 	public ChangeColorController(final ColorSelectorButton button) {
 		button.addColorChangedListener(new ColorChangedListener() {
+			
+			/**
+			 * Changing colors according to Affectiveness 
+			 * 
+			 * 
+			 */
 			
 		    public void colorChanged(Color newColor) {
 		    		if(button.getName() == "Meditation"){
