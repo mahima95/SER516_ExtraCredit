@@ -10,8 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import client.constants.ClientConstants;
 import client.controller.ChangeColorController;
+import utility.Constants;
 
 /**
  * View for the Affective Section of the client
@@ -37,7 +37,7 @@ public class AffectiveView extends JPanel {
 
 		affectiveGraph.setBounds(0, 0, 320, 300);
 		affectiveGraph.setBorder(BorderFactory.createLineBorder(Color.black));
-		affectiveGraph.setBackground(ClientConstants.GRAPHPANEL);
+		affectiveGraph.setBackground(Constants.GRAPHPANEL);
 		leftPanel.add(affectiveGraph);
 
 		colPanel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
@@ -52,35 +52,35 @@ public class AffectiveView extends JPanel {
 		gridBagConstraints.gridx = 1;
 		gridBagConstraints.gridy = 1;
 
-		meditationButton = new ColorSelectorButton(ClientConstants.meditationColor, ClientConstants.MEDITATION);
+		meditationButton = new ColorSelectorButton(Constants.meditationColor, Constants.MEDITATION);
 		new ChangeColorController(meditationButton);
 		colPanel.add(meditationButton, gridBagConstraints);
 
 		gridBagConstraints.gridx = 2;
 		gridBagConstraints.gridy = 1;
 
-		engagementButton = new ColorSelectorButton(ClientConstants.engagementColor, ClientConstants.ENGAGEMENT);
+		engagementButton = new ColorSelectorButton(Constants.engagementColor, Constants.ENGAGEMENT);
 		new ChangeColorController(engagementButton);
 		colPanel.add(engagementButton, gridBagConstraints);
 
 		gridBagConstraints.gridx = 3;
 		gridBagConstraints.gridy = 1;
 
-		excitementstButton = new ColorSelectorButton(ClientConstants.excitementstColor, ClientConstants.EXCITEMENTST);
+		excitementstButton = new ColorSelectorButton(Constants.excitementstColor, Constants.EXCITEMENTST);
 		new ChangeColorController(excitementstButton);
 		colPanel.add(excitementstButton, gridBagConstraints);
 
 		gridBagConstraints.gridx = 2;
 		gridBagConstraints.gridy = 2;
 
-		frustationButton = new ColorSelectorButton(ClientConstants.frustationColor, ClientConstants.FRUSTATION);
+		frustationButton = new ColorSelectorButton(Constants.frustationColor, Constants.FRUSTATION);
 		new ChangeColorController(frustationButton);
 		colPanel.add(frustationButton, gridBagConstraints);
 
 		gridBagConstraints.gridx = 3;
 		gridBagConstraints.gridy = 2;
 
-		excitementltButton = new ColorSelectorButton(ClientConstants.excitementltColor, ClientConstants.EXCITEMENTLT);
+		excitementltButton = new ColorSelectorButton(Constants.excitementltColor, Constants.EXCITEMENTLT);
 		new ChangeColorController(excitementltButton);
 		colPanel.add(excitementltButton, gridBagConstraints);
 

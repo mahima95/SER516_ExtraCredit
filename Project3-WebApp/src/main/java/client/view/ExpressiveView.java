@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-import client.constants.ClientConstants;
+import utility.Constants;
  /**
   * View for the Expression Section of the client
   * @SER516 Project3_Team03
@@ -31,152 +31,152 @@ public class ExpressiveView extends JPanel{
 		this.add(graphPanel);
 		
 		blinkGraph.setBounds(90, 10, 260, 20);
-		blinkGraph.setBackground(ClientConstants.GRAPHPANEL);
+		blinkGraph.setBackground(Constants.GRAPHPANEL);
 		blinkGraph.setBorder(BorderFactory.createLineBorder(Color.black));
 		graphPanel.add(blinkGraph);
 
 		JLabel blinkLabel = new JLabel("Blink\r\n");
-		blinkLabel.setForeground(ClientConstants.GRAPHLABEL_FOREGROUND);
+		blinkLabel.setForeground(Constants.GRAPHLABEL_FOREGROUND);
 		blinkLabel.setOpaque(true);
-		blinkLabel.setBackground(ClientConstants.GRAPHLABEL_BACKGROUND);
+		blinkLabel.setBackground(Constants.GRAPHLABEL_BACKGROUND);
 		blinkLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		blinkLabel.setBounds(10, 10, 75, 20);
 		graphPanel.add(blinkLabel);
 
 		rgtWinkGraph.setBounds(90, 35, 260, 20);
-		rgtWinkGraph.setBackground(ClientConstants.GRAPHPANEL);
+		rgtWinkGraph.setBackground(Constants.GRAPHPANEL);
 		rgtWinkGraph.setBorder(BorderFactory.createLineBorder(Color.black));
 		graphPanel.add(rgtWinkGraph);
 
 		JLabel rgtWinkLabel = new JLabel("Right Wink");
-		rgtWinkLabel.setBackground(ClientConstants.GRAPHLABEL_BACKGROUND);
-		rgtWinkLabel.setForeground(ClientConstants.GRAPHLABEL_FOREGROUND);
+		rgtWinkLabel.setBackground(Constants.GRAPHLABEL_BACKGROUND);
+		rgtWinkLabel.setForeground(Constants.GRAPHLABEL_FOREGROUND);
 		rgtWinkLabel.setOpaque(true);
 		rgtWinkLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		rgtWinkLabel.setBounds(10, 35, 75, 20);
 		graphPanel.add(rgtWinkLabel);
 
 		lftWinkGraph.setBounds(90, 60, 260, 20);
-		lftWinkGraph.setBackground(ClientConstants.GRAPHPANEL);
+		lftWinkGraph.setBackground(Constants.GRAPHPANEL);
 		lftWinkGraph.setBorder(BorderFactory.createLineBorder(Color.black));
 		graphPanel.add(lftWinkGraph);
 
 		final JLabel lftWinkLabel = new JLabel("Left Wink");
 		lftWinkLabel.setOpaque(true);
-		lftWinkLabel.setForeground(ClientConstants.GRAPHLABEL_FOREGROUND);
-		lftWinkLabel.setBackground(ClientConstants.GRAPHLABEL_BACKGROUND);
+		lftWinkLabel.setForeground(Constants.GRAPHLABEL_FOREGROUND);
+		lftWinkLabel.setBackground(Constants.GRAPHLABEL_BACKGROUND);
 		lftWinkLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		lftWinkLabel.setBounds(10, 60, 75, 20);
 		graphPanel.add(lftWinkLabel);
 
 		looklftGraph.setBounds(90, 85, 260, 20);
-		looklftGraph.setBackground(ClientConstants.GRAPHPANEL);
+		looklftGraph.setBackground(Constants.GRAPHPANEL);
 		looklftGraph.setBorder(BorderFactory.createLineBorder(Color.black));
 		graphPanel.add(looklftGraph);
 
 		final JLabel looklftLabel = new JLabel("Look left");
 		looklftLabel.setOpaque(true);
-		looklftLabel.setForeground(ClientConstants.GRAPHLABEL_FOREGROUND);
-		looklftLabel.setBackground(ClientConstants.GRAPHLABEL_BACKGROUND);
+		looklftLabel.setForeground(Constants.GRAPHLABEL_FOREGROUND);
+		looklftLabel.setBackground(Constants.GRAPHLABEL_BACKGROUND);
 		looklftLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		looklftLabel.setBounds(10, 85, 75, 20);
 		graphPanel.add(looklftLabel);
 		
 		lookrgtGraph.setBounds(90, 110, 260, 20);
-		lookrgtGraph.setBackground(ClientConstants.GRAPHPANEL);
+		lookrgtGraph.setBackground(Constants.GRAPHPANEL);
 		lookrgtGraph.setBorder(BorderFactory.createLineBorder(Color.black));
 		graphPanel.add(lookrgtGraph);
 
 		final JLabel lookrgtLabel = new JLabel("Look right");
 		lookrgtLabel.setOpaque(true);
-		lookrgtLabel.setForeground(ClientConstants.GRAPHLABEL_FOREGROUND);
-		lookrgtLabel.setBackground(ClientConstants.GRAPHLABEL_BACKGROUND);
+		lookrgtLabel.setForeground(Constants.GRAPHLABEL_FOREGROUND);
+		lookrgtLabel.setBackground(Constants.GRAPHLABEL_BACKGROUND);
 		lookrgtLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		lookrgtLabel.setBounds(10, 110, 75, 20);
 		graphPanel.add(lookrgtLabel);
 
 		furrowGraph.setBounds(90, 135, 260, 20);
-		furrowGraph.setBackground(ClientConstants.GRAPHPANEL);
+		furrowGraph.setBackground(Constants.GRAPHPANEL);
 		furrowGraph.setBorder(BorderFactory.createLineBorder(Color.black));
 		graphPanel.add(furrowGraph);
 
 		final JLabel furrowLabel = new JLabel("Furrow Brow\r\n");
 		furrowLabel.setOpaque(true);
-		furrowLabel.setForeground(ClientConstants.GRAPHLABEL_FOREGROUND);
-		furrowLabel.setBackground(ClientConstants.GRAPHLABEL_BACKGROUND);
+		furrowLabel.setForeground(Constants.GRAPHLABEL_FOREGROUND);
+		furrowLabel.setBackground(Constants.GRAPHLABEL_BACKGROUND);
 		furrowLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		furrowLabel.setBounds(10, 135, 75, 20);
 		graphPanel.add(furrowLabel);
 
 		raiseGraph.setBounds(90, 160, 260, 20);
-		raiseGraph.setBackground(ClientConstants.GRAPHPANEL);
+		raiseGraph.setBackground(Constants.GRAPHPANEL);
 		raiseGraph.setBorder(BorderFactory.createLineBorder(Color.black));
 		graphPanel.add(raiseGraph);
 
 		final JLabel raiseLabel = new JLabel("Raise Brow");
 		raiseLabel.setOpaque(true);
-		raiseLabel.setForeground(ClientConstants.GRAPHLABEL_FOREGROUND);
-		raiseLabel.setBackground(ClientConstants.GRAPHLABEL_BACKGROUND);
+		raiseLabel.setForeground(Constants.GRAPHLABEL_FOREGROUND);
+		raiseLabel.setBackground(Constants.GRAPHLABEL_BACKGROUND);
 		raiseLabel.setBounds(10, 160, 75, 20);
 		graphPanel.add(raiseLabel);
 
 		smileGraph.setBounds(90, 185, 260, 20);
-		smileGraph.setBackground(ClientConstants.GRAPHPANEL);
+		smileGraph.setBackground(Constants.GRAPHPANEL);
 		smileGraph.setBorder(BorderFactory.createLineBorder(Color.black));
 		graphPanel.add(smileGraph);
 
 		final JLabel smileLabel = new JLabel("Smile");
 		smileLabel.setOpaque(true);
-		smileLabel.setForeground(ClientConstants.GRAPHLABEL_FOREGROUND);
-		smileLabel.setBackground(ClientConstants.GRAPHLABEL_BACKGROUND);
+		smileLabel.setForeground(Constants.GRAPHLABEL_FOREGROUND);
+		smileLabel.setBackground(Constants.GRAPHLABEL_BACKGROUND);
 		smileLabel.setBounds(10, 185, 75, 20);
 		graphPanel.add(smileLabel);
 
 		clenchGraph.setBounds(90, 210, 260, 20);
-		clenchGraph.setBackground(ClientConstants.GRAPHPANEL);
+		clenchGraph.setBackground(Constants.GRAPHPANEL);
 		clenchGraph.setBorder(BorderFactory.createLineBorder(Color.black));
 		graphPanel.add(clenchGraph);
 
 		final JLabel clenchLabel = new JLabel("Clench");
 		clenchLabel.setOpaque(true);
-		clenchLabel.setForeground(ClientConstants.GRAPHLABEL_FOREGROUND);
-		clenchLabel.setBackground(ClientConstants.GRAPHLABEL_BACKGROUND);
+		clenchLabel.setForeground(Constants.GRAPHLABEL_FOREGROUND);
+		clenchLabel.setBackground(Constants.GRAPHLABEL_BACKGROUND);
 		clenchLabel.setBounds(10, 210, 75, 20);
 		graphPanel.add(clenchLabel);
 
 		lftSmirkGraph.setBounds(90, 235, 260, 20);
-		lftSmirkGraph.setBackground(ClientConstants.GRAPHPANEL);
+		lftSmirkGraph.setBackground(Constants.GRAPHPANEL);
 		lftSmirkGraph.setBorder(BorderFactory.createLineBorder(Color.black));
 		graphPanel.add(lftSmirkGraph);
 
 		final JLabel lftSmirkLabel = new JLabel("Left Smirk");
 		lftSmirkLabel.setOpaque(true);
-		lftSmirkLabel.setForeground(ClientConstants.GRAPHLABEL_FOREGROUND);
-		lftSmirkLabel.setBackground(ClientConstants.GRAPHLABEL_BACKGROUND);
+		lftSmirkLabel.setForeground(Constants.GRAPHLABEL_FOREGROUND);
+		lftSmirkLabel.setBackground(Constants.GRAPHLABEL_BACKGROUND);
 		lftSmirkLabel.setBounds(10, 235, 75, 20);
 		graphPanel.add(lftSmirkLabel);
 
 		rgtSmirkGraph.setBounds(90, 260, 260, 20);
-		rgtSmirkGraph.setBackground(ClientConstants.GRAPHPANEL);
+		rgtSmirkGraph.setBackground(Constants.GRAPHPANEL);
 		rgtSmirkGraph.setBorder(BorderFactory.createLineBorder(Color.black));
 		graphPanel.add(rgtSmirkGraph);
 
 		final JLabel rgtSmirkLabel = new JLabel("Right Smirk");
 		rgtSmirkLabel.setOpaque(true);
-		rgtSmirkLabel.setForeground(ClientConstants.GRAPHLABEL_FOREGROUND);
-		rgtSmirkLabel.setBackground(ClientConstants.GRAPHLABEL_BACKGROUND);
+		rgtSmirkLabel.setForeground(Constants.GRAPHLABEL_FOREGROUND);
+		rgtSmirkLabel.setBackground(Constants.GRAPHLABEL_BACKGROUND);
 		rgtSmirkLabel.setBounds(10, 260, 75, 20);
 		graphPanel.add(rgtSmirkLabel);
 
 		laughGraph.setBounds(90, 285, 260, 20);
-		laughGraph.setBackground(ClientConstants.GRAPHPANEL);
+		laughGraph.setBackground(Constants.GRAPHPANEL);
 		laughGraph.setBorder(BorderFactory.createLineBorder(Color.black));
 		graphPanel.add(laughGraph);
 
 		final JLabel laughLabel = new JLabel("Laugh");
 		laughLabel.setOpaque(true);
-		laughLabel.setForeground(ClientConstants.GRAPHLABEL_FOREGROUND);
-		laughLabel.setBackground(ClientConstants.GRAPHLABEL_BACKGROUND);
+		laughLabel.setForeground(Constants.GRAPHLABEL_FOREGROUND);
+		laughLabel.setBackground(Constants.GRAPHLABEL_BACKGROUND);
 		laughLabel.setBounds(10, 285, 75, 20);
 		graphPanel.add(laughLabel);
 
