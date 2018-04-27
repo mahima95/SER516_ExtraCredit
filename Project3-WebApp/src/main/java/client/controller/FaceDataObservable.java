@@ -6,6 +6,12 @@ import java.util.Observable;
 import client.service.FaceClient;
 import utility.FaceData;
 
+/**
+ * Observer data pattern 
+ * 
+ * @SER516 SER516_ExtraCredit
+ * @version 1.0
+ */
 public class FaceDataObservable extends Observable {
 	private ArrayList<FaceData> faceDataList;
 	private static FaceDataObservable expressiveModelObservableInstance ;
@@ -23,6 +29,13 @@ public class FaceDataObservable extends Observable {
 		}
 		return expressiveModelObservableInstance;
 	}
+	
+	/**
+	 * Adding face data to a list
+	 * Notifying all observers 
+	 * 
+	 * @param fed Contains the latest affective values
+	 */
 	
 	public void AddToListFaceData(FaceData faceData)
 	{
