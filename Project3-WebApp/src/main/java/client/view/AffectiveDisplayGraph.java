@@ -13,6 +13,8 @@ import java.util.List;
 import javax.swing.*;
 
 import client.constants.ClientConstants;
+import client.controller.PlotGraph;
+import utility.Constants;
 
 /**
  * Class to display the expressions graphs
@@ -23,10 +25,7 @@ public class AffectiveDisplayGraph extends JPanel {
     private static final long serialVersionUID = 1L;
     private static final int WIDTH = 300;
     private static final int HEIGHT = 300;
-    private static final int BORDER_GAP = 0;
-    private static final Stroke GRAPH_STROKE = new BasicStroke(1f);
-    private static final int GRAPH_POINT_WIDTH = 1;
-    private static int MAX_LIST_SIZE = 30;
+    
     private List<Double> list1 = new ArrayList<Double>();
     private List<Double> list2 = new ArrayList<Double>();
     private List<Double> list3 = new ArrayList<Double>();
@@ -81,34 +80,34 @@ public class AffectiveDisplayGraph extends JPanel {
        g5.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
        //creates x and y axes scales.       
-       double xScale = ((double) getWidth() - 2 * BORDER_GAP) / (list1.size() + MAX_LIST_SIZE - 1);
+       double xScale = ((double) getWidth() - 2 * Constants.BORDER_GAP) / (list1.size() + Constants.MAX_LIST_SIZE - 1);
        double yScale = (double) getHeight() - 1;
        
        //calls to functions to create coordinate values from the provided lists.
-       createPoints(graphPoints1, list1, xScale, yScale);
-       createPoints(graphPoints2, list2, xScale, yScale);
-       createPoints(graphPoints3, list3, xScale, yScale);
-       createPoints(graphPoints4, list4, xScale, yScale);
-       createPoints(graphPoints5, list5, xScale, yScale);
+       PlotGraph.createPoints(graphPoints1, list1, xScale, yScale);
+       PlotGraph.createPoints(graphPoints2, list2, xScale, yScale);
+       PlotGraph.createPoints(graphPoints3, list3, xScale, yScale);
+       PlotGraph.createPoints(graphPoints4, list4, xScale, yScale);
+       PlotGraph.createPoints(graphPoints5, list5, xScale, yScale);
        
        //creates x and y axes.
-       g2.drawLine(BORDER_GAP, getHeight() - BORDER_GAP, BORDER_GAP, BORDER_GAP);
-       g2.drawLine(BORDER_GAP, getHeight() - BORDER_GAP, getWidth() - BORDER_GAP, getHeight() - BORDER_GAP);
+       g2.drawLine(Constants.BORDER_GAP, getHeight() - Constants.BORDER_GAP, Constants.BORDER_GAP, Constants.BORDER_GAP);
+       g2.drawLine(Constants.BORDER_GAP, getHeight() - Constants.BORDER_GAP, getWidth() - Constants.BORDER_GAP, getHeight() - Constants.BORDER_GAP);
 
        //calls to functions to plots the lines.
-       oldStroke1 = plotLines(g1, oldStroke1, graphPoints1, ClientConstants.meditationColor);
-       oldStroke2 = plotLines(g2, oldStroke2, graphPoints2, ClientConstants.engagementColor);
-       oldStroke3 = plotLines(g3, oldStroke3,graphPoints3, ClientConstants.excitementstColor);
-       oldStroke4 = plotLines(g4, oldStroke4,graphPoints4, ClientConstants.frustationColor);
-       oldStroke5 = plotLines(g5, oldStroke5,graphPoints5, ClientConstants.excitementltColor);
+       oldStroke1 = PlotGraph.plotLines(g1, oldStroke1, graphPoints1, ClientConstants.meditationColor);
+       oldStroke2 = PlotGraph.plotLines(g2, oldStroke2, graphPoints2, ClientConstants.engagementColor);
+       oldStroke3 = PlotGraph.plotLines(g3, oldStroke3,graphPoints3, ClientConstants.excitementstColor);
+       oldStroke4 = PlotGraph.plotLines(g4, oldStroke4,graphPoints4, ClientConstants.frustationColor);
+       oldStroke5 = PlotGraph.plotLines(g5, oldStroke5,graphPoints5, ClientConstants.excitementltColor);
 
        
        //calls to functions to plots the points.
-       plotPoints(g1, oldStroke1, graphPoints1, ClientConstants.meditationColor);
-       plotPoints(g2, oldStroke2, graphPoints2, ClientConstants.engagementColor);
-       plotPoints(g3, oldStroke3, graphPoints3, ClientConstants.excitementstColor);
-       plotPoints(g4, oldStroke4, graphPoints4, ClientConstants.frustationColor);
-       plotPoints(g5, oldStroke5, graphPoints5, ClientConstants.excitementltColor);
+       PlotGraph.plotPoints(g1, oldStroke1, graphPoints1, ClientConstants.meditationColor);
+       PlotGraph.plotPoints(g2, oldStroke2, graphPoints2, ClientConstants.engagementColor);
+       PlotGraph.plotPoints(g3, oldStroke3, graphPoints3, ClientConstants.excitementstColor);
+       PlotGraph.plotPoints(g4, oldStroke4, graphPoints4, ClientConstants.frustationColor);
+       PlotGraph.plotPoints(g5, oldStroke5, graphPoints5, ClientConstants.excitementltColor);
 
        
     }
@@ -121,59 +120,5 @@ public class AffectiveDisplayGraph extends JPanel {
        return new Dimension(WIDTH, HEIGHT - 10);
     }
     
-    /**
-     * Generates points to be plotted on the graph
-     * @param p contains list of generated points
-     * @param l contains list of values received from server
-     * @param xScale contains the horizontal dimension of the graph
-     * @param yScale contains the vertical dimension of the graph
-     */
-    public void createPoints(List<Point> p, List<Double> l, double xScale, double yScale){
-      for (int i = 0; i < l.size(); i++) {
-            int x1 = (int) (i * xScale + BORDER_GAP);
-            int y1 = (int) ((1 - l.get(i)) * yScale  + BORDER_GAP);
-            p.add(new Point(x1, y1));
-         }
-    }
-    
-    /**
-     * Generates and plots the lines on the graph
-     * @param ga contains the graphic component
-     * @param s contains the stroke component that is used to plot lines
-     * @param p contains the list of points
-     * @param gc contains the color values for the respective lines
-     * @return contains the stroke component that has been generated
-     */
-    public Stroke plotLines(Graphics2D ga, Stroke s, List<Point> p, Color gc){
-      s = ga.getStroke();
-      ga.setColor(gc);
-        ga.setStroke(GRAPH_STROKE);
-        for (int i = 1; i < p.size(); i++) {
-           int x1 = p.get(i-1).x;
-           int y1 = p.get(i-1).y;
-           int x2 = p.get(i).x;
-           int y2 = p.get(i).y;
-           ga.drawLine(x1, y1, x2, y2);         
-        }
-        return s;
-    }
-    
-    /**
-     * Plots the points on the graph
-     * @param ga contains the graphic component
-     * @param s contains the generated stroke component 
-     * @param p contains the list of points
-     * @param gc contains the color values for the respective points
-     */
-    public void plotPoints(Graphics2D ga, Stroke s, List<Point> p, Color gc){
-        ga.setStroke(s);      
-        ga.setColor(gc);
-        for (int i = 0; i < p.size(); i++) {
-           int x = p.get(i).x - GRAPH_POINT_WIDTH / 2;
-           int y = p.get(i).y - GRAPH_POINT_WIDTH / 2;;
-           int ovalW = GRAPH_POINT_WIDTH;
-           int ovalH = GRAPH_POINT_WIDTH;
-           ga.fillOval(x, y, ovalW, ovalH);
-        }
-    }
+   
 }
