@@ -1,4 +1,4 @@
-package utility;
+package model;
 
 /**
  * Utility class containing Affective part of the face data.
@@ -7,11 +7,11 @@ package utility;
  */
 public class FaceAffectiveData {
 	
-	Double meditation = 0.0;
-	Double engagementBoredom = 0.0;
-	Double excitementShortTerm = 0.0;
-	Double frustation = 0.0;
-	Double excitementLongTerm = 0.0;
+	private Double meditation = 0.0;
+	private Double engagementBoredom = 0.0;
+	private Double excitementShortTerm = 0.0;
+	private Double frustation = 0.0;
+	private Double excitementLongTerm = 0.0;
 	
 	public FaceAffectiveData() {
 		this.meditation = new Double(0.0);

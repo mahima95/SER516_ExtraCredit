@@ -1,5 +1,8 @@
 package utility;
 
+import model.FaceAffectiveData;
+import model.FaceExpressionData;
+
 /**
  * Utility class containing the face data.
  * @SER516 Project3_Team03

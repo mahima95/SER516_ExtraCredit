@@ -1,4 +1,4 @@
-package utility;
+package model;
 
 /**
  * Utility class containing Expression part of the face data.
@@ -7,19 +7,19 @@ package utility;
  */
 public class FaceExpressionData {
 
-	Double raiseBrow = 0.0;
-	Double furrowBrow = 0.0;
-	Double smile = 0.0;
-	Double clench = 0.0;
-	Double smirkLeft = 0.0;
-	Double smirkRight = 0.0;
-	Double laugh = 0.0;
-	Double blink = 0.0;
-	Double winkLeft = 0.0;
-	Double winkRight = 0.0;
-	Double lookLeft = 0.0;
-	Double lookRight = 0.0;
-	Boolean eyeReset = false;
+	private Double raiseBrow = 0.0;
+	private Double furrowBrow = 0.0;
+	private Double smile = 0.0;
+	private Double clench = 0.0;
+	private Double smirkLeft = 0.0;
+	private Double smirkRight = 0.0;
+	private Double laugh = 0.0;
+	private Double blink = 0.0;
+	private Double winkLeft = 0.0;
+	private Double winkRight = 0.0;
+	private Double lookLeft = 0.0;
+	private Double lookRight = 0.0;
+	private Boolean eyeReset = false;
 
 	public FaceExpressionData() {
 		this.raiseBrow = new Double(0.0);

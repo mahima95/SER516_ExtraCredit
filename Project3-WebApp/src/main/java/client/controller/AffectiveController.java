@@ -2,9 +2,10 @@ package client.controller;
 
 import client.view.AffectiveDisplayGraph;
 import client.view.AffectiveView;
+import model.FaceAffectiveData;
+
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
-import utility.FaceAffectiveData;
 
 
 /**
