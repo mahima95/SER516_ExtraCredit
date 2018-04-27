@@ -17,9 +17,11 @@ public class ClientController {
 	 * Run the client UI.
 	 */
 	public ClientController() {
+		
 		expressiveController = new ExpressiveController();
 		affectiveController = new AffectiveController();
 		clientui = new ClientUi(expressiveController, affectiveController);
+		FaceDataObservable.getFaceDataObservableInstance().addObserver(clientui);
 		clientui.setVisible(true);
 
 	}

@@ -14,6 +14,7 @@ import org.glassfish.tyrus.client.ClientManager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import client.controller.FaceDataObservable;
 import client.view.ClientUi;
 import utility.FaceData;
 
@@ -27,7 +28,7 @@ import utility.FaceData;
 public class FaceClient {
 
 	private static Gson gson = null;
-	private static ClientUi observer = null;
+	private static FaceDataObservable observer = null;
 	private static boolean isConnected = false;
 
 	/**
@@ -45,7 +46,7 @@ public class FaceClient {
 	 * Creates a gson object
 	 * @param observer Contains the observer object of the clientUI
 	 */
-	public static void create(ClientUi observer) {
+	public static void create(FaceDataObservable observer) {
 		FaceClient.gson = new GsonBuilder().create();
 		FaceClient.observer = observer;
 	}
@@ -70,7 +71,7 @@ public class FaceClient {
 	@OnMessage
 	public void onMessage(String message, Session session) throws Exception {
 		FaceData faceData = gson.fromJson(message, FaceData.class);
-		observer.setFaceData(faceData);
+		FaceDataObservable.getFaceDataObservableInstance().AddToListFaceData(faceData);
 	}
 	
 	/**

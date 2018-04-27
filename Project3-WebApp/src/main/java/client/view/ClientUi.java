@@ -1,6 +1,8 @@
 package client.view;
 
 import java.awt.Rectangle;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -13,7 +15,6 @@ import javax.swing.WindowConstants;
 import client.controller.AffectiveController;
 import client.controller.ExpressiveController;
 import client.controller.MenuItemController;
-import client.service.FaceClient;
 import utility.FaceData;
 
 /**
@@ -21,7 +22,7 @@ import utility.FaceData;
  * @Version 1.0
  */
 @SuppressWarnings("serial")
-public class ClientUi extends JFrame {
+public class ClientUi extends JFrame implements Observer {
 
 	JPanel facePanel;
 	private ExpressiveController expressiveController;
@@ -37,7 +38,6 @@ public class ClientUi extends JFrame {
 		initialize(expressiveController.expressiveView, affectiveController.affectiveView);
 		this.setBounds(new Rectangle(0, 0, 710, 432));
 		this.getContentPane().setLayout(null);
-		FaceClient.create(this);
 	}
 
 	/**
@@ -83,14 +83,16 @@ public class ClientUi extends JFrame {
 		new MenuItemController(serverConnect, serverConsole, exitMenuItem);
 		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	}
-	
-	/**
-	 * Sets the different data values.
-	 * @param faceData contains the received expression data
-	 */
-	public void setFaceData(FaceData faceData) {
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		FaceData faceData = (FaceData) arg;
 		this.expressiveController.updateTime(faceData);
 		this.expressiveController.updateGraph(faceData.getFaceExpressionData());
 	    this.affectiveController.updateGraph(faceData.getFaceAffectiveData());
+		
 	}
+	
+		
 }

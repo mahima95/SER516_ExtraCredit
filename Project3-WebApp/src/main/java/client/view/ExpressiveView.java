@@ -17,7 +17,7 @@ import client.constants.ClientConstants;
 @SuppressWarnings("serial")
 public class ExpressiveView extends JPanel{
 	
-	private ExpressiveView(JPanel facePanel, JPanel graphPanel,JPanel blinkGraph, JPanel rgtWinkGraph, JPanel lftWinkGraph, JPanel looklftGraph, JPanel lookrgtGraph, JPanel furrowGraph,
+	public ExpressiveView(JPanel facePanel, JPanel graphPanel,JPanel blinkGraph, JPanel rgtWinkGraph, JPanel lftWinkGraph, JPanel looklftGraph, JPanel lookrgtGraph, JPanel furrowGraph,
 			JPanel raiseGraph, JPanel smileGraph, JPanel clenchGraph, JPanel lftSmirkGraph, JPanel rgtSmirkGraph, JPanel laughGraph){
 		
 		this.setLayout(null);
@@ -225,68 +225,4 @@ public class ExpressiveView extends JPanel{
 		graphPanel.add(laughGraphPanel);
 		
 	}
-	/*
-	 * Builder Class for ExpressionView
-	 */
-		
-	public static class ExpressionViewBuilder
-	{
-		JPanel buildfacePanel;
-		JPanel buildgraphPanel;
-		JPanel buildblinkGraph;
-		JPanel buildrgtWinkGraph;
-		JPanel buildlftWinkGraph;
-		JPanel buildlooklftGraph;
-		JPanel buildlookrgtGraph;
-		JPanel buildfurrowGraph;
-		JPanel buildraiseGraph;
-		JPanel buildsmileGraph;
-		JPanel buildclenchGraph;
-		JPanel buildlftSmirkGraph;
-		JPanel buildrgtSmirkGraph;
-		JPanel buildlaughGraph;
-		
-		public ExpressionViewBuilder(JPanel facePanel, JPanel graphPanel,JPanel blinkGraph, JPanel rgtWinkGraph, JPanel lftWinkGraph, JPanel looklftGraph, JPanel lookrgtGraph, JPanel furrowGraph,
-				JPanel raiseGraph, JPanel smileGraph, JPanel clenchGraph, JPanel lftSmirkGraph, JPanel rgtSmirkGraph, JPanel laughGraph)
-		{
-			this.buildfacePanel=facePanel;
-			this.buildgraphPanel=graphPanel;
-			this.buildblinkGraph=blinkGraph;
-			this.buildrgtWinkGraph=rgtWinkGraph;
-			this. buildlftWinkGraph=rgtWinkGraph;
-			 this.buildlooklftGraph=lftWinkGraph;
-			this. buildlookrgtGraph=looklftGraph;
-			this. buildfurrowGraph=lookrgtGraph;
-			this. buildraiseGraph=raiseGraph;
-			this. buildsmileGraph=smileGraph;
-			this. buildclenchGraph=clenchGraph;
-			this.buildlftSmirkGraph=lftSmirkGraph;
-			this. buildrgtSmirkGraph=rgtSmirkGraph;
-			this. buildlaughGraph=laughGraph;
-			
-		}
-	
-		
-		
-		
-		public ExpressiveView createExpressiveView()
-		{
-			return new ExpressiveView(buildfacePanel, 
-			buildgraphPanel,
-			buildblinkGraph,
-			buildrgtWinkGraph,
-			 buildlftWinkGraph,
-			 buildlooklftGraph,
-			 buildlookrgtGraph,
-			 buildfurrowGraph,
-			 buildraiseGraph,
-			 buildsmileGraph,
-			 buildclenchGraph,
-			 buildlftSmirkGraph,
-			 buildrgtSmirkGraph,
-			 buildlaughGraph);
-		}
-		
-	}	
-	
 }

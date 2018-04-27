@@ -69,9 +69,9 @@ public class ExpressiveController {
 		rgtSmirkGraph = new JPanel();
 		laughGraph = new JPanel();
 
-		expressiveView = new ExpressiveView.ExpressionViewBuilder(facePanel, graphPanel, blinkGraph, rgtWinkGraph, lftWinkGraph, looklftGraph,
+		expressiveView = new ExpressiveView(facePanel, graphPanel, blinkGraph, rgtWinkGraph, lftWinkGraph, looklftGraph,
 				lookrgtGraph, furrowGraph, raiseGraph, smileGraph, clenchGraph, lftSmirkGraph, rgtSmirkGraph,
-				laughGraph).createExpressiveView();
+				laughGraph);
 
 		final JLabel faceLabel = new JLabel("    Face Expression");
 		faceLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
