@@ -2,9 +2,9 @@ package client.controller;
 
 import java.awt.Color;
 
-import client.constants.ClientConstants;
 import client.view.ColorSelectorButton;
 import client.view.ColorSelectorButton.ColorChangedListener;
+import utility.Constants;
 
 /**
  * Controller for changing the color of the graph
@@ -18,19 +18,19 @@ public class ChangeColorController {
 			
 		    public void colorChanged(Color newColor) {
 		    		if(button.getName() == "Meditation"){
-		    			ClientConstants.meditationColor = newColor;
+		    			Constants.meditationColor = newColor;
 		    		}
 		    		else if(button.getName() == "Engagement"){
-		    			ClientConstants.engagementColor = newColor;
+		    			Constants.engagementColor = newColor;
 		    		}
 		    		else if(button.getName() == "Frustation"){
-		    			ClientConstants.frustationColor = newColor;
+		    			Constants.frustationColor = newColor;
 		    		}
 		    		else if(button.getName() == "Excitement Short Term"){
-		    			ClientConstants.excitementstColor = newColor;
+		    			Constants.excitementstColor = newColor;
 		    		}
 		    		else if(button.getName() == "Excitement Long Term"){
-		    			ClientConstants.excitementltColor = newColor;
+		    			Constants.excitementltColor = newColor;
 		    		}
 		    }
 		});

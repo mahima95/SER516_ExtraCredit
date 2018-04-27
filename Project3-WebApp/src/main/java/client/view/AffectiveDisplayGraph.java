@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 
-import client.constants.ClientConstants;
 import client.controller.PlotGraph;
 import utility.Constants;
 
@@ -95,19 +94,19 @@ public class AffectiveDisplayGraph extends JPanel {
        g2.drawLine(Constants.BORDER_GAP, getHeight() - Constants.BORDER_GAP, getWidth() - Constants.BORDER_GAP, getHeight() - Constants.BORDER_GAP);
 
        //calls to functions to plots the lines.
-       oldStroke1 = PlotGraph.plotLines(g1, oldStroke1, graphPoints1, ClientConstants.meditationColor);
-       oldStroke2 = PlotGraph.plotLines(g2, oldStroke2, graphPoints2, ClientConstants.engagementColor);
-       oldStroke3 = PlotGraph.plotLines(g3, oldStroke3,graphPoints3, ClientConstants.excitementstColor);
-       oldStroke4 = PlotGraph.plotLines(g4, oldStroke4,graphPoints4, ClientConstants.frustationColor);
-       oldStroke5 = PlotGraph.plotLines(g5, oldStroke5,graphPoints5, ClientConstants.excitementltColor);
+       oldStroke1 = PlotGraph.plotLines(g1, oldStroke1, graphPoints1, Constants.meditationColor);
+       oldStroke2 = PlotGraph.plotLines(g2, oldStroke2, graphPoints2, Constants.engagementColor);
+       oldStroke3 = PlotGraph.plotLines(g3, oldStroke3,graphPoints3, Constants.excitementstColor);
+       oldStroke4 = PlotGraph.plotLines(g4, oldStroke4,graphPoints4, Constants.frustationColor);
+       oldStroke5 = PlotGraph.plotLines(g5, oldStroke5,graphPoints5, Constants.excitementltColor);
 
        
        //calls to functions to plots the points.
-       PlotGraph.plotPoints(g1, oldStroke1, graphPoints1, ClientConstants.meditationColor);
-       PlotGraph.plotPoints(g2, oldStroke2, graphPoints2, ClientConstants.engagementColor);
-       PlotGraph.plotPoints(g3, oldStroke3, graphPoints3, ClientConstants.excitementstColor);
-       PlotGraph.plotPoints(g4, oldStroke4, graphPoints4, ClientConstants.frustationColor);
-       PlotGraph.plotPoints(g5, oldStroke5, graphPoints5, ClientConstants.excitementltColor);
+       PlotGraph.plotPoints(g1, oldStroke1, graphPoints1, Constants.meditationColor);
+       PlotGraph.plotPoints(g2, oldStroke2, graphPoints2, Constants.engagementColor);
+       PlotGraph.plotPoints(g3, oldStroke3, graphPoints3, Constants.excitementstColor);
+       PlotGraph.plotPoints(g4, oldStroke4, graphPoints4, Constants.frustationColor);
+       PlotGraph.plotPoints(g5, oldStroke5, graphPoints5, Constants.excitementltColor);
 
        
     }
