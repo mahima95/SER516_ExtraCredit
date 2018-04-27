@@ -9,8 +9,8 @@ import javax.swing.JPanel;
 import client.view.DisplayGraph;
 import client.view.ExpressiveView;
 import client.view.FacePaint;
+import model.FaceExpressionData;
 import utility.FaceData;
-import utility.FaceExpressionData;
 
 /**
  * Controller for the Expressions View

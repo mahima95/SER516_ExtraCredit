@@ -12,9 +12,9 @@ import javax.swing.JTextArea;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import utility.FaceAffectiveData;
+import model.FaceAffectiveData;
+import model.FaceExpressionData;
 import utility.FaceData;
-import utility.FaceExpressionData;
 
 /**
  * Controller for the detection section of the server

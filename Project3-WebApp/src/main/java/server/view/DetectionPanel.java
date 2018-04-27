@@ -14,10 +14,10 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerListModel;
 import javax.swing.SpringLayout;
 
+import model.FaceAffectiveData;
+import model.FaceExpressionData;
 import server.ServerConsole;
 import server.controller.DetectionController;
-import utility.FaceAffectiveData;
-import utility.FaceExpressionData;
 
 /**
  * View for the Detection Panel.
