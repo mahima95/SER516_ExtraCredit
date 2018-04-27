@@ -254,10 +254,10 @@ public class ExpressiveView extends JPanel{
 			this.buildgraphPanel=graphPanel;
 			this.buildblinkGraph=blinkGraph;
 			this.buildrgtWinkGraph=rgtWinkGraph;
-			this. buildlftWinkGraph=rgtWinkGraph;
-			 this.buildlooklftGraph=lftWinkGraph;
-			this. buildlookrgtGraph=looklftGraph;
-			this. buildfurrowGraph=lookrgtGraph;
+			this. buildlftWinkGraph=lftWinkGraph;
+			 this.buildlooklftGraph=looklftGraph;
+			this. buildlookrgtGraph=lookrgtGraph;
+			this. buildfurrowGraph=furrowGraph;
 			this. buildraiseGraph=raiseGraph;
 			this. buildsmileGraph=smileGraph;
 			this. buildclenchGraph=clenchGraph;
