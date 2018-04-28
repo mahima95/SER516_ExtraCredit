@@ -1,4 +1,4 @@
-package client.controller;
+package client.view;
 
 import java.awt.Color;
 import java.awt.Graphics2D;

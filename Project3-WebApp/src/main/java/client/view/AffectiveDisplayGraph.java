@@ -11,7 +11,6 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
-import client.controller.PlotGraph;
 import utility.Constants;
 
 /**
