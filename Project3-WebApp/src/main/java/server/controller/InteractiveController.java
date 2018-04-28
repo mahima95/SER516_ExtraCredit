@@ -13,34 +13,40 @@ import server.view.DetectionPanel;
 /**
  * Controller for the interactive section of the server.
  * 
- * @SER516 Project3_Team03
+ * @SER516  @SER516 Project3_Team03
  * @Version 1.0
  */
 public class InteractiveController {
 
-	JButton btnSend;
+	JButton buttonSend;
 	JSpinner emoStateInterval;
-	JCheckBox chckbxAuroReset;
+	JCheckBox checkAutoBoxReset;
 	
-	public InteractiveController(final JButton btnSend, final JSpinner emoStateInterval, final JCheckBox chckbxAutoReset,
+	public InteractiveController(final JButton buttonSend, final JSpinner emoStateInterval, final JCheckBox checkAutoBoxReset,
 			final DetectionPanel dpanel) {
 
-		this.btnSend = btnSend;
+		this.buttonSend = buttonSend;
 		this.emoStateInterval = emoStateInterval;
-		this.chckbxAuroReset = chckbxAutoReset;
+		this.checkAutoBoxReset = checkAutoBoxReset;
 		
 		//Sends the selected values to the client.
-		btnSend.addActionListener(new ActionListener() {
+		buttonSend.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
+
+		    /**
+		    * Sets the event action to provided message.
+		    *
+		    * @param event sets the event to be performed.
+		    */
+			public void actionPerformed(ActionEvent event) {
 				
 				
-				if (e.getActionCommand().equals("Send")){
-					if (chckbxAutoReset.isSelected()){
-						btnSend.setText("Stop");
+				if (event.getActionCommand().equals("Send")){
+					if (checkAutoBoxReset.isSelected()){
+						buttonSend.setText("Stop");
 						emoStateInterval.setEnabled(false);
-						chckbxAutoReset.setEnabled(false);
+						checkAutoBoxReset.setEnabled(false);
 						Double interval = (Double)emoStateInterval.getValue();
 						new ThreadController(interval,dpanel);
 						ThreadController.start();
@@ -51,8 +57,8 @@ public class InteractiveController {
 				}else {
 					ThreadController.stop();
 					emoStateInterval.setEnabled(true);
-					chckbxAuroReset.setEnabled(true);
-					btnSend.setText("Send");
+					checkAutoBoxReset.setEnabled(true);
+					buttonSend.setText("Send");
 				}
 
 			}

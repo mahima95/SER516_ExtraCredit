@@ -12,10 +12,13 @@ import javax.swing.JTextArea;
 /**
 * This class is used for logging messages to the 
 * GUI console.
+* 
+*  @SER516 SER516_ExtraCredit
+ * @Version 1.0
 */
 public  class ServerConsole {
 
-    protected JTextArea consolePane;
+    protected JTextArea serverconsolePane;
     protected JScrollPane scrollPane;
     private static ServerConsole instance = null;
     
@@ -26,7 +29,7 @@ public  class ServerConsole {
     */
   
     public void print(String msg) {
-        this.consolePane.setText("Console: " + msg);
+        this.serverconsolePane.setText("Console: " + msg);
     }
 
     /**
@@ -36,16 +39,21 @@ public  class ServerConsole {
     */
     
     public void setJtextArea(JTextArea consolePane) {
-        this.consolePane = consolePane;
+        this.serverconsolePane = consolePane;
         
     }
     
+    /**
+     * Setter for the target GUI element.
+     *
+     * @param scrollPane the pane to which logged messages will appear.
+     */
     public void setJScrollPane(JScrollPane scrollPane)
     {
     	this.scrollPane = scrollPane;
     }
     
-    /*
+    /**
      * getInstance returns the ServerConsole object
      *
      */

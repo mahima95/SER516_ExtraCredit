@@ -19,6 +19,8 @@ import model.FaceExpressionData;
 import server.ServerConsole;
 import server.controller.DetectionController;
 
+
+
 /**
  * View for the Detection Panel.
  * @SER516 Project3_Team03
@@ -40,8 +42,8 @@ public class DetectionPanel extends JPanel {
 	public FaceAffectiveData faceAffectiveData;
 	public JLabel lblEmoState,lblTime,lblSeconds,lblUpperFace,lblEye,lblLowerface,lblAffective,lblEmoengineLogs;
 	public SpringLayout springpanel;
-	public ServerConsole sc;
-	public DetectionController detectionController;
+	public ServerConsole serverconsole;
+	public DetectionController detectionController=new DetectionController();
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public DetectionPanel() {
@@ -100,19 +102,23 @@ public class DetectionPanel extends JPanel {
 		spinnerAffective.setModel(new SpinnerListModel(
 				new String[] { "0", "0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9", "1.0" }));
 		
-		sc = ServerConsole.getInstance();
-		sc.setJtextArea(txtAreaEmoLogs);
+		serverconsole = ServerConsole.getInstance();
+		serverconsole.setJtextArea(txtAreaEmoLogs);
 				
 		scroll = new JScrollPane(txtAreaEmoLogs);
-		sc.setJScrollPane(scroll);
+		serverconsole.setJScrollPane(scroll);
 		
 		setComponentLayout();
 		addComponent();
 		
 		
-		this.detectionController = new DetectionController(spinnerUpperFace, spinnerLowerFace, spinnerAffective,
-				comboUpperFace, comboLowerFace, comboAffective, comboEye, chckbxEyeAutoReset, rdbtnActive,txtAreaEmoLogs,btnClearLogs,
-				faceAffectiveData, faceExpressionData);
+		 detectionController = detectionController.new DetectionControllerBuilder( spinnerUpperFace,  spinnerLowerFace,
+				spinnerAffective,  comboUpperFace, comboLowerFace,
+					comboAffective, comboEye,  chckbxEyeAutoReset,
+					rdbtnActive,txtAreaEmoLogs, btnClearLogs,  faceAffectiveData,
+					 faceExpressionData).createDetectionControl();
+		
+		
 	}
 	
 	public void setComponentLayout(){

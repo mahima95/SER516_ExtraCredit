@@ -7,17 +7,17 @@ import server.view.DetectionPanel;
 /**
  * Controller for sending multiple values in certain time durations
  * 
- * @SER516 Project3_Team03
+ * @SER516 SER516_ExtraCredit
  * @Version 1.0
  */
 public class ThreadController implements Runnable {
 
-	static Thread th;
-	DetectionPanel dpanel ; 
-	Double emointerval = 1.0;
-	Double timeElapsed = 0.0;
-	public ThreadController(Double emointerval, DetectionPanel dpanel ){	
-		th= new Thread(this);
+		static Thread thread;
+		DetectionPanel dpanel ; 
+		Double emointerval = 1.0;
+		Double timeElapsed = 0.0;
+		public ThreadController(Double emointerval, DetectionPanel dpanel ){	
+		thread= new Thread(this);
 		this.dpanel=dpanel;
 		this.emointerval= emointerval;
 		timeElapsed = Double.parseDouble(dpanel.timeElapsedTextbox.getText());
@@ -26,11 +26,11 @@ public class ThreadController implements Runnable {
 	public void run() {
 		while(true){
 			timeElapsed += emointerval;
-			//System.out.println(timeElapsed);
+		
 			try {
 				Thread.sleep((long) (1000 * emointerval));
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
+			
 				e.printStackTrace();
 			}
 			dpanel.timeElapsedTextbox.setText(timeElapsed+"");
@@ -45,7 +45,7 @@ public class ThreadController implements Runnable {
 	 */
 	@SuppressWarnings("deprecation")
 	public static void stop() {
-		th.stop();
+		thread.stop();
 	}
 	
 	/**
@@ -53,6 +53,6 @@ public class ThreadController implements Runnable {
 	 */
 	public static void start(){
 	
-		th.start();
+		thread.start();
 	}
 }

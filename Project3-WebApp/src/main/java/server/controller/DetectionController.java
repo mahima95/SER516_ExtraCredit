@@ -19,7 +19,7 @@ import model.FaceExpressionData;
 /**
  * Controller for the detection section of the server
  * 
- * @SER516 Project3_Team03
+ * @SER516 SER516_ExtraCredit
  * @Version 1.0
  */
 @SuppressWarnings("rawtypes")
@@ -33,8 +33,28 @@ public class DetectionController {
 	public FaceExpressionData faceExpressionData;
 	public JTextArea txtAreaEmoLogs;
 	public JButton btnClearLogs;
+	
+	
+	
+	/**
+	 * Detects controller 
+	 * 
+	 * @param spinnerUpperFace
+	 * @param spinnerLowerFace
+	 * @param spinnerAffective
+	 * @param comboUpperFace
+	 * @param comboLowerFace
+	 * @param comboAffective
+	 * @param comboEye
+	 * @param checkEyeBox
+	 * @param radioEyeActive
+	 * @param txtAreaEmoLogs
+	 * @param btnClearLogs
+	 * @param faceAffectiveData
+	 * @param faceExpressionData
+	 */
 
-	public DetectionController(final JSpinner spinnerUpperFace, final JSpinner spinnerLowerFace,
+	private DetectionController(final JSpinner spinnerUpperFace, final JSpinner spinnerLowerFace,
 			final JSpinner spinnerAffective, final JComboBox comboUpperFace, final JComboBox comboLowerFace,
 			final JComboBox comboAffective, final JComboBox comboEye, final JCheckBox checkEyeBox,
 			final JRadioButton radioEyeActive,final JTextArea txtAreaEmoLogs,final JButton btnClearLogs, FaceAffectiveData faceAffectiveData,
@@ -53,6 +73,8 @@ public class DetectionController {
 		this.chckbxEyeAutoReset = checkEyeBox;
 		this.txtAreaEmoLogs = txtAreaEmoLogs;
 		this.btnClearLogs = btnClearLogs;
+		
+	
 		
 		comboUpperFace.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -116,6 +138,10 @@ public class DetectionController {
 
 	}
 	
+	public DetectionController() {
+		
+	}
+
 	/**
 	 * Updates the expression data based on the selected spinner values.
 	 */
@@ -224,5 +250,48 @@ public class DetectionController {
 		faceData.setFaceAffectiveData(faceAffectiveData);
 		faceData.setFaceExpressionData(faceExpressionData);
 		return faceData;
+		
+		
 	}
+	
+	 
+		public class DetectionControllerBuilder
+		{
+			
+			 
+			public DetectionControllerBuilder(final JSpinner spinnerUpperFacebuilder, final JSpinner spinnerLowerFacebuilder,
+					final JSpinner spinnerAffectivebuilder, final JComboBox comboUpperFacebuilder, final JComboBox comboLowerFacebuilder,
+					final JComboBox comboAffectivebuilder, final JComboBox comboEyebuilder, final JCheckBox checkEyeBoxbuilder,
+					final JRadioButton radioEyeActivebuilder,final JTextArea txtAreaEmoLogsbuilder,final JButton btnClearLogsbuilder, FaceAffectiveData faceAffectiveDatabuilder,
+					FaceExpressionData faceExpressionDatabuilder)
+			
+		
+			{
+				faceAffectiveData = faceAffectiveDatabuilder;
+				faceExpressionData = faceExpressionDatabuilder;
+				spinnerAffective = spinnerAffectivebuilder;
+				spinnerLowerFace = spinnerLowerFacebuilder;
+				spinnerUpperFace = spinnerUpperFacebuilder;
+				comboUpperFace = comboUpperFacebuilder;
+				comboLowerFace = comboLowerFacebuilder;
+				comboAffective = comboAffectivebuilder;
+				comboEye = comboEyebuilder;
+				radioEyeActive = radioEyeActivebuilder;
+				chckbxEyeAutoReset = checkEyeBoxbuilder;
+				txtAreaEmoLogs = txtAreaEmoLogsbuilder;
+				btnClearLogs = btnClearLogsbuilder;
+				
+			}
+			
+			public DetectionController createDetectionControl()
+			{
+				return new DetectionController( spinnerUpperFace,  spinnerLowerFace,
+						spinnerAffective,  comboUpperFace,  comboLowerFace,
+					 comboAffective, comboEye,  chckbxEyeAutoReset,
+						 radioEyeActive,txtAreaEmoLogs, btnClearLogs, faceAffectiveData, faceExpressionData
+						);
+				
+			}
+			
+		}
 }

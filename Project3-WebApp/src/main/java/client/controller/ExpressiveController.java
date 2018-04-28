@@ -55,7 +55,7 @@ public class ExpressiveController {
 	public ExpressiveView expressiveView;
 
 	/**
-	 * Initializes the panels, labels and the graphs with the inital values
+	 * Initializes the panels, labels and the graphs with the initial values
 	 */
 	public ExpressiveController() {
 		initializePanels();
