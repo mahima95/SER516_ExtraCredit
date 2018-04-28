@@ -21,24 +21,31 @@ import server.controller.MenuController;
 import server.service.FaceServer;
 
 /**
- * View for the Server.
- * @SER516 Project3_Team03
+ * Class for displaying the server window
+ * 
+ * @SER516 SER516_ExtraCredit
  * @Version 1.0
  */
 @SuppressWarnings("serial")
 public class EmoticonComposer extends JFrame implements WindowListener {
 
 	private JMenuBar menuBar;
-	private JMenu mnNewMenu;
-	private JMenuItem mntmAbout;
-	JMenuItem mntmQuit;
-	Thread inputThread;
+	private JMenu mainMenuBar;
+	private JMenuItem aboutMenu;
+	private JLabel imagePanel;
+	private JTabbedPane tabbedPane;
+	private JTabbedPane tabbedPanel;
 	boolean running = false;
 	double emoIntervalSelected = 1;
 	Double timeElapsed = 0.0;
 	InteractivePanel ipanel;
+	JMenuItem mntmQuit;
+	Thread inputThread;
 	public DetectionPanel dpanel;
 
+	/**
+	 * Initializes the server window
+	 */
 	public EmoticonComposer() {
 
 		try {
@@ -58,24 +65,24 @@ public class EmoticonComposer extends JFrame implements WindowListener {
 		this.getContentPane().setLayout(null);
 
 		try {
-			JLabel imagePanel = new JLabel(new ImageIcon(ImageIO.read(new File("bg.jpg"))));
+			imagePanel = new JLabel(new ImageIcon(ImageIO.read(new File("bg.jpg"))));
 			imagePanel.setEnabled(true);
 			this.setContentPane(imagePanel);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(12, 30, 489, 175);
 		this.getContentPane().add(tabbedPane);
 
-		JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane_1.setBounds(12, 243, 489, 552);
-		this.getContentPane().add(tabbedPane_1);
+		tabbedPanel = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPanel.setBounds(12, 243, 489, 552);
+		this.getContentPane().add(tabbedPanel);
 
 		dpanel = new DetectionPanel();
 		dpanel.setBorder(new MatteBorder(4, 4, 4, 4, (Color) Color.BLACK));
-		tabbedPane_1.addTab("DETECTION", null, dpanel, null);
+		tabbedPanel.addTab("DETECTION", null, dpanel, null);
 
 		ipanel = new InteractivePanel(dpanel);
 		ipanel.setBorder(new MatteBorder(4, 4, 4, 4, (Color) Color.BLACK));
@@ -85,29 +92,29 @@ public class EmoticonComposer extends JFrame implements WindowListener {
 		menuBar = new JMenuBar();
 		this.setJMenuBar(menuBar);
 
-		mnNewMenu = new JMenu("File");
-		menuBar.add(mnNewMenu);
+		mainMenuBar = new JMenu("File");
+		menuBar.add(mainMenuBar);
 
-		mntmAbout = new JMenuItem("About");
-		mnNewMenu.add(mntmAbout);
+		aboutMenu = new JMenuItem("About");
+		mainMenuBar.add(aboutMenu);
 
 		mntmQuit = new JMenuItem("Quit");
-		mnNewMenu.add(mntmQuit);
+		mainMenuBar.add(mntmQuit);
 
-		new MenuController(mntmAbout, mntmQuit);
+		new MenuController(aboutMenu, mntmQuit);
 		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		addWindowListener(this);
-		
+
 	}
 
 	@Override
-	public void windowOpened(WindowEvent e) {		
+	public void windowOpened(WindowEvent e) {
 	}
 
 	@Override
-	public void windowClosing(WindowEvent e) {		
+	public void windowClosing(WindowEvent e) {
 	}
-	
+
 	/**
 	 * Closes the socket when window closes.
 	 */
@@ -117,18 +124,18 @@ public class EmoticonComposer extends JFrame implements WindowListener {
 	}
 
 	@Override
-	public void windowIconified(WindowEvent e) {		
+	public void windowIconified(WindowEvent e) {
 	}
 
 	@Override
-	public void windowDeiconified(WindowEvent e) {		
+	public void windowDeiconified(WindowEvent e) {
 	}
 
 	@Override
-	public void windowActivated(WindowEvent e) {		
+	public void windowActivated(WindowEvent e) {
 	}
 
 	@Override
-	public void windowDeactivated(WindowEvent e) {		
+	public void windowDeactivated(WindowEvent e) {
 	}
 }

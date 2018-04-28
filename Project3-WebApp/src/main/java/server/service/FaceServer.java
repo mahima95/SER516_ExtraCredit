@@ -15,9 +15,10 @@ import model.FaceData;
 import server.ServerConsole;
 
 /**
- * Class to establish web-socket connection with client and send the data to the client.
+ * Class to establish web-socket connection with client and send the data to the
+ * client.
  * 
- * @SER516 Project3_Team03
+ * @SER516 SER516_ExtraCredit
  * @version 1.0
  */
 @ServerEndpoint(value = "/faceData")
@@ -26,11 +27,13 @@ public class FaceServer {
 	private static Gson gson = null;
 	private static Session session = null;
 	private static Server server = null;
-	static ServerConsole sc = ServerConsole.getInstance();
-	
+	static ServerConsole serverConsole = ServerConsole.getInstance();
+
 	/**
 	 * Establishes a connection with the client.
-	 * @param port contains the port number for the connection.
+	 * 
+	 * @param port
+	 *            contains the port number for the connection.
 	 */
 	public static void start(int port) {
 		if (FaceServer.gson == null) {
@@ -40,12 +43,12 @@ public class FaceServer {
 		try {
 			System.out.println("Server Started");
 			FaceServer.server.start();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Stops the connection.
 	 */
@@ -56,33 +59,37 @@ public class FaceServer {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Sends the data to the client.
-	 * @param faceData contains the data values
+	 * 
+	 * @param faceData
+	 *            contains the data values
 	 */
 	public static void put(FaceData faceData) {
 		if (FaceServer.session == null) {
-			sc.print("No session present.");
+			serverConsole.print("No session present.");
 			return;
 		}
 		try {
 			String message = FaceServer.gson.toJson(faceData, FaceData.class);
 			FaceServer.session.getBasicRemote().sendText(message);
-			sc.print(message);
+			serverConsole.print(message);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Checks if a session is already in play
-	 * @param session Contains the session value.
+	 * 
+	 * @param session
+	 *            Contains the session value.
 	 */
 	@OnOpen
 	public void onOpen(Session session) {
 		if (FaceServer.session != null) {
-			sc.print(session.getId() + " has opened a connection, but a connection is already open.");
+			serverConsole.print(session.getId() + " has opened a connection, but a connection is already open.");
 			try {
 				session.getBasicRemote().sendText("Only one client is allowed at a time");
 				session.close();
@@ -92,23 +99,29 @@ public class FaceServer {
 			return;
 		}
 		FaceServer.session = session;
-		sc.print(session.getId() + " has opened a connection");
+		serverConsole.print(session.getId() + " has opened a connection");
 	}
-	
+
 	/**
 	 * Executes when a message is sent
-	 * @param message Contains the message that is sent
-	 * @param session Contains the session value
-	 * @throws Exception handles exceptions
+	 * 
+	 * @param message
+	 *            Contains the message that is sent
+	 * @param session
+	 *            Contains the session value
+	 * @throws Exception
+	 *             handles exceptions
 	 */
 	@OnMessage
 	public void onMessage(String message, Session session) throws Exception {
-		sc.print(message);
+		serverConsole.print(message);
 	}
-	
+
 	/**
 	 * Executes when the connection is closed.
-	 * @param session Contains the session value.
+	 * 
+	 * @param session
+	 *            Contains the session value.
 	 */
 	@OnClose
 	public void onClose(Session session) {

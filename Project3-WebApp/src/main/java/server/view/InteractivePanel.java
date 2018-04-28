@@ -12,18 +12,27 @@ import javax.swing.SpinnerNumberModel;
 import server.controller.InteractiveController;
 
 /**
- * View for the Interactive Panel
- * @SER516 Project3_Team03
+ * Class for displaying the Interactive Panel
+ * 
+ * @SER516 SER516_ExtraCredit
  * @Version 1.0
  */
 @SuppressWarnings("serial")
 public class InteractivePanel extends JPanel {
 
-	JSpinner spinnerEmoStateInterval;
-	JCheckBox chckbxAutoReset;
-	JButton btnSend;
+	private JSpinner spinnerEmoStateInterval;
+	private JCheckBox chckbxAutoReset;
+	private JButton btnSend;
+	private JComboBox comboBoxPlayer;
+	private JLabel labelStateInterval;
+	private JLabel labelSeconds;
 	DetectionPanel dpanel;
 
+	/**
+	 * Initialize the Interaction panel window
+	 * 
+	 * @param dpanel
+	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public InteractivePanel(DetectionPanel dpanel) {
 
@@ -33,24 +42,24 @@ public class InteractivePanel extends JPanel {
 		lblPlayer.setBounds(12, 26, 56, 16);
 		this.add(lblPlayer);
 
-		JComboBox comboBoxPlayer = new JComboBox();
+		comboBoxPlayer = new JComboBox();
 		comboBoxPlayer.setBounds(60, 23, 96, 22);
 		comboBoxPlayer.setModel(new DefaultComboBoxModel(new String[] { "0", "1" }));
 		this.add(comboBoxPlayer);
 
-		JLabel lblEmo = new JLabel("EmoStateInterval");
-		lblEmo.setBounds(219, 20, 118, 28);
-		this.add(lblEmo);
+		labelStateInterval = new JLabel("EmoStateInterval");
+		labelStateInterval.setBounds(219, 20, 118, 28);
+		this.add(labelStateInterval);
 
 		spinnerEmoStateInterval = new JSpinner();
 		spinnerEmoStateInterval
-				.setModel(new SpinnerNumberModel(new Double(0.25), new Double(0.25), null, new Double(0.25)));
+		.setModel(new SpinnerNumberModel(new Double(0.25), new Double(0.25), null, new Double(0.25)));
 		spinnerEmoStateInterval.setBounds(349, 23, 75, 22);
 		this.add(spinnerEmoStateInterval);
 
-		JLabel lblSec = new JLabel("Sec");
-		lblSec.setBounds(436, 26, 35, 16);
-		this.add(lblSec);
+		labelSeconds = new JLabel("Sec");
+		labelSeconds.setBounds(436, 26, 35, 16);
+		this.add(labelSeconds);
 
 		chckbxAutoReset = new JCheckBox("Auto Resend");
 		chckbxAutoReset.setBounds(219, 58, 113, 25);
