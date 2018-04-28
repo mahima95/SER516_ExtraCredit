@@ -16,9 +16,17 @@ public class ThreadController implements Runnable {
 		DetectionPanel dpanel ; 
 		Double emointerval = 1.0;
 		Double timeElapsed = 0.0;
-		public ThreadController(Double emointerval, DetectionPanel dpanel ){	
+		
+		/**
+		 * Handles Server threads
+		 * 
+		 * @param emointerval
+		 * @param detetctionpanel
+		 */
+		
+		public ThreadController(Double emointerval, DetectionPanel detectionpanel ){	
 		thread= new Thread(this);
-		this.dpanel=dpanel;
+		this.dpanel=detectionpanel;
 		this.emointerval= emointerval;
 		timeElapsed = Double.parseDouble(dpanel.timeElapsedTextbox.getText());
 	}

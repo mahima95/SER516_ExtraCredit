@@ -26,18 +26,18 @@ import model.FaceExpressionData;
 public class DetectionController {
 
 	public JSpinner spinnerEmoStateInterval, spinnerUpperFace, spinnerLowerFace, spinnerAffective;
-	public JCheckBox chckbxEyeAutoReset;
+	public JCheckBox checkboxEyeAutoReset;
 	public JComboBox comboUpperFace, comboLowerFace, comboEye, comboAffective;
 	public JRadioButton radioEyeActive;
 	public FaceAffectiveData faceAffectiveData;
 	public FaceExpressionData faceExpressionData;
-	public JTextArea txtAreaEmoLogs;
-	public JButton btnClearLogs;
+	public JTextArea textAreaEmoLogs;
+	public JButton buttonClearLogs;
 	
 	
 	
 	/**
-	 * Detects controller 
+	 * Controller to detect server options
 	 * 
 	 * @param spinnerUpperFace
 	 * @param spinnerLowerFace
@@ -70,9 +70,9 @@ public class DetectionController {
 		this.comboAffective = comboAffective;
 		this.comboEye = comboEye;
 		this.radioEyeActive = radioEyeActive;
-		this.chckbxEyeAutoReset = checkEyeBox;
-		this.txtAreaEmoLogs = txtAreaEmoLogs;
-		this.btnClearLogs = btnClearLogs;
+		this.checkboxEyeAutoReset = checkEyeBox;
+		this.textAreaEmoLogs = txtAreaEmoLogs;
+		this.buttonClearLogs = btnClearLogs;
 		
 	
 		
@@ -100,7 +100,7 @@ public class DetectionController {
 			}
 		});
 
-		chckbxEyeAutoReset.addActionListener(new ActionListener() {
+		checkboxEyeAutoReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				updateExpressionData();
 			}
@@ -205,7 +205,7 @@ public class DetectionController {
 			}
 		}
 
-		boolean eyeAutoReset = chckbxEyeAutoReset.isSelected();
+		boolean eyeAutoReset = checkboxEyeAutoReset.isSelected();
 
 		if (eyeAutoReset) {
 			faceExpressionData.setEyeReset(true);
@@ -253,13 +253,33 @@ public class DetectionController {
 		
 		
 	}
-	
+	/**
+	 * 
+	 * @Inner class builder
+	 *
+	 */
 	 
 		public class DetectionControllerBuilder
 		{
-			
+			/**
+			 * Constructor to build the control detection class
+			 * 
+			 * @param spinnerUpperFacebuilder
+			 * @param spinnerLowerFacebuilder
+			 * @param spinnerAffectivebuilder
+			 * @param comboUpperFacebuilder
+			 * @param comboLowerFacebuilder
+			 * @param comboAffectivebuilder
+			 * @param comboEyebuilder
+			 * @param checkEyeBoxbuilder
+			 * @param radioEyeActivebuilder
+			 * @param txtAreaEmoLogsbuilder
+			 * @param btnClearLogsbuilder
+			 * @param faceAffectiveDatabuilder
+			 * @param faceExpressionDatabuilder
+			 */
 			 
-			public DetectionControllerBuilder(final JSpinner spinnerUpperFacebuilder, final JSpinner spinnerLowerFacebuilder,
+					public DetectionControllerBuilder(final JSpinner spinnerUpperFacebuilder, final JSpinner spinnerLowerFacebuilder,
 					final JSpinner spinnerAffectivebuilder, final JComboBox comboUpperFacebuilder, final JComboBox comboLowerFacebuilder,
 					final JComboBox comboAffectivebuilder, final JComboBox comboEyebuilder, final JCheckBox checkEyeBoxbuilder,
 					final JRadioButton radioEyeActivebuilder,final JTextArea txtAreaEmoLogsbuilder,final JButton btnClearLogsbuilder, FaceAffectiveData faceAffectiveDatabuilder,
@@ -277,18 +297,22 @@ public class DetectionController {
 				comboAffective = comboAffectivebuilder;
 				comboEye = comboEyebuilder;
 				radioEyeActive = radioEyeActivebuilder;
-				chckbxEyeAutoReset = checkEyeBoxbuilder;
-				txtAreaEmoLogs = txtAreaEmoLogsbuilder;
-				btnClearLogs = btnClearLogsbuilder;
+				checkboxEyeAutoReset = checkEyeBoxbuilder;
+				textAreaEmoLogs = txtAreaEmoLogsbuilder;
+				buttonClearLogs = btnClearLogsbuilder;
 				
 			}
 			
+					/**
+					 *Creates a Detection Controllor
+					 */
+					
 			public DetectionController createDetectionControl()
 			{
 				return new DetectionController( spinnerUpperFace,  spinnerLowerFace,
 						spinnerAffective,  comboUpperFace,  comboLowerFace,
-					 comboAffective, comboEye,  chckbxEyeAutoReset,
-						 radioEyeActive,txtAreaEmoLogs, btnClearLogs, faceAffectiveData, faceExpressionData
+					 comboAffective, comboEye,  checkboxEyeAutoReset,
+						 radioEyeActive,textAreaEmoLogs, buttonClearLogs, faceAffectiveData, faceExpressionData
 						);
 				
 			}

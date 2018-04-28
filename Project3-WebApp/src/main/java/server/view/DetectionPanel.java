@@ -53,7 +53,7 @@ public class DetectionPanel extends JPanel {
 
 		faceAffectiveData = new FaceAffectiveData();
 		faceExpressionData = new FaceExpressionData();
-		lblEmoState = new JLabel("EMO STATE");
+		lblEmoState = new JLabel("EMOTION STATE");
 		lblTime = new JLabel("TIME: ");
 		lblSeconds = new JLabel("Seconds");
 		lblUpperFace = new JLabel("Upperface:");

@@ -7,7 +7,7 @@ import server.view.EmoticonComposer;
 
 /**
  * Main class that is invoked when the server has to be started.
- * @SER516 Project3_Team03
+ * @SER516 SER516_ExtraCredit
  * @Version 1.0
  */
 public class ServerMainHandler {

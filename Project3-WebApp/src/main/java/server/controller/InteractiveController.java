@@ -13,7 +13,7 @@ import server.view.DetectionPanel;
 /**
  * Controller for the interactive section of the server.
  * 
- * @SER516  @SER516 Project3_Team03
+ * @SER516 SER516_ExtraCredit
  * @Version 1.0
  */
 public class InteractiveController {
@@ -22,6 +22,14 @@ public class InteractiveController {
 	JSpinner emoStateInterval;
 	JCheckBox checkAutoBoxReset;
 	
+	/**
+	 * Constructor for getting constants
+	 * 
+	 * @param buttonSend
+	 * @param emoStateInterval
+	 * @param checkAutoBoxReset
+	 * @param dpanel
+	 */
 	public InteractiveController(final JButton buttonSend, final JSpinner emoStateInterval, final JCheckBox checkAutoBoxReset,
 			final DetectionPanel dpanel) {
 

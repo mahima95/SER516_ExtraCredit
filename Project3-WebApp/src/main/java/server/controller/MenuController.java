@@ -11,18 +11,22 @@ import server.ServerMainHandler;
 /**
  * Controller for the menu items
  * 
- * @SER516 Project3_Team03
+ * @SER516 SER516_ExtraCredit
  * @Version 1.0
  */
 public class MenuController {
-
+/**
+ * Options contained in the menu
+ * @param about
+ * @param exit
+ */
 	public MenuController(JMenuItem about, JMenuItem exit ){
 		
 		//Gives information about the application
 		about.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
+			
 				JOptionPane.showMessageDialog(null, "Emoticon Application. Version 1.0");
 			}
 		});
@@ -30,7 +34,7 @@ public class MenuController {
 		//CLoses the application
 		exit.addActionListener(new ActionListener() {
 
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent event) {
 				ServerMainHandler.close();
 			}
 		});
