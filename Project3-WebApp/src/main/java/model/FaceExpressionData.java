@@ -1,8 +1,9 @@
 package model;
 
 /**
- * Utility class containing Expression part of the face data.
- * @SER516 Project3_Team03
+ * Model class containing Expression part of the face data.
+ * 
+ * @SER516 SER516_ExtraCredit
  * @version 1.0
  */
 public class FaceExpressionData {
@@ -21,6 +22,9 @@ public class FaceExpressionData {
 	private Double lookRight = 0.0;
 	private Boolean eyeReset = false;
 
+	/**
+	 * Initializes expressive data values
+	 */
 	public FaceExpressionData() {
 		this.raiseBrow = new Double(0.0);
 		this.furrowBrow = new Double(0.0);
@@ -36,6 +40,63 @@ public class FaceExpressionData {
 		this.lookRight = new Double(0.0);
 		this.eyeReset = new Boolean(false);
 	}
+
+	/**
+	 * Resets the expressive data to default
+	 */
+	public void reset() {
+		raiseBrow = 0.0;
+		furrowBrow = 0.0;
+		smile = 0.0;
+		clench = 0.0;
+		smirkLeft = 0.0;
+		smirkRight = 0.0;
+		laugh = 0.0;
+		blink = 0.0;
+		winkLeft = 0.0;
+		winkRight = 0.0;
+		lookLeft = 0.0;
+		lookRight = 0.0;
+		eyeReset = false;
+	}
+
+	/**
+	 * Stores expressive data values into array
+	 * 
+	 * @return contains the expressive data array
+	 */
+	public double[] fetchVectors() {
+		double[] expressiveDataValues = new double[13];
+		expressiveDataValues[1] = getRaiseBrow();
+		expressiveDataValues[2] = getFurrowBrow();
+		expressiveDataValues[3] = getSmile();
+		expressiveDataValues[4] = getClench();
+		expressiveDataValues[5] = getSmirkLeft();
+		expressiveDataValues[6] = getSmirkRight();
+		expressiveDataValues[7] = getLaugh();
+		expressiveDataValues[8] = getBlink();
+		expressiveDataValues[9] = getWinkLeft();
+		expressiveDataValues[10] = getWinkRight();
+		expressiveDataValues[11] = getLookLeft();
+		expressiveDataValues[12] = getLookRight();
+		return expressiveDataValues;
+	}
+
+	/**
+	 * Converts the received affective data into string.
+	 */
+	@Override
+	public String toString() {
+		return "FaceExpressionData{" + "raiseBrow=" + raiseBrow + ", furrowBrow=" + furrowBrow + ", smile=" + smile
+				+ ", clench=" + clench + ", smirkLeft=" + smirkLeft + ", smirkRight=" + smirkRight + ", laugh=" + laugh
+				+ ", blink=" + blink + ", winkLeft=" + winkLeft + ", winkRight=" + winkRight + ", lookLeft=" + lookLeft
+				+ ", lookRight=" + lookRight + ", eyeReset=" + eyeReset + '}';
+	}
+
+	/**
+	 * 
+	 * Getters and Setters begin
+	 */
 
 	public Double getRaiseBrow() {
 		return raiseBrow;
@@ -140,53 +201,8 @@ public class FaceExpressionData {
 	public void setEyeReset(Boolean eyeReset) {
 		this.eyeReset = eyeReset;
 	}
-
-	public void reset() {
-		raiseBrow = 0.0;
-		furrowBrow = 0.0;
-		smile = 0.0;
-		clench = 0.0;
-		smirkLeft = 0.0;
-		smirkRight = 0.0;
-		laugh = 0.0;
-		blink = 0.0;
-		winkLeft = 0.0;
-		winkRight = 0.0;
-		lookLeft = 0.0;
-		lookRight = 0.0;
-		eyeReset = false;
-	}
-	
 	/**
-	 * Stores various values into an array
-	 * @return contains the affective data array
+	 * Getters and Setters end
 	 */
-	public double[] fetchVectors() {
-		double[] p = new double[13];
-		p[1] = getRaiseBrow();
-		p[2] = getFurrowBrow();
-		p[3] = getSmile();
-		p[4] = getClench();
-		p[5] = getSmirkLeft();
-		p[6] = getSmirkRight();
-		p[7] = getLaugh();
-		p[8] = getBlink();
-		p[9] = getWinkLeft();
-		p[10] = getWinkRight();
-		p[11] = getLookLeft();
-		p[12] = getLookRight();
-		return p;
-	}
-	
-	/**
-	 * Converts the received affective data into string.
-	 */
-	@Override
-	public String toString() {
-		return "FaceExpressionData{" + "raiseBrow=" + raiseBrow + ", furrowBrow=" + furrowBrow + ", smile=" + smile
-				+ ", clench=" + clench + ", smirkLeft=" + smirkLeft + ", smirkRight=" + smirkRight + ", laugh=" + laugh
-				+ ", blink=" + blink + ", winkLeft=" + winkLeft + ", winkRight=" + winkRight + ", lookLeft=" + lookLeft
-				+ ", lookRight=" + lookRight + ", eyeReset=" + eyeReset + '}';
-	}
 
 }
