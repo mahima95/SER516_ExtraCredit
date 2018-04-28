@@ -33,14 +33,14 @@ public class FacePaint extends JPanel {
 	private static final int nose_width = 8;
 	private double x_factor, y_factor;
 	private int x_origin, y_origin;
-	double[] v = new double[13];
+	double[] vectorValues = new double[13];
 	
 	/**
 	 * Used to change the value of the vector
 	 * @param vector contains new expression values
 	 */
 	public void changeVector(double[] vector){
-		v = vector;
+		vectorValues = vector;
 	}
 	
 	/**
@@ -52,29 +52,29 @@ public class FacePaint extends JPanel {
 	 * @param height Specifies the height of the window
 	 * @param width Specifies the width of the window
 	 */
-	public void drawFace(Graphics g, int x, int y, int height, int width) {
+	public void drawFace(Graphics graphics, int xCoordinate, int yCoordinate, int height, int width) {
 		String direction = "Center";
 		boolean blinkl = false;
 		boolean blinkr = false;
-		if (v[8] == 1) {
+		if (vectorValues[8] == 1) {
 			blinkl = true;
 			blinkr = true;
-		} else if (v[9] == 1) {
+		} else if (vectorValues[9] == 1) {
 			blinkl = true;
-		} else if (v[10] == 1) {
+		} else if (vectorValues[10] == 1) {
 			blinkr = true;
-		} else if (v[11] == 1) {
+		} else if (vectorValues[11] == 1) {
 			direction = "Left";
-		} else if (v[12] == 1) {
+		} else if (vectorValues[12] == 1) {
 			direction = "Right";
 		}
-		calc_scaleFactors(x, y, height, width);
-		make_head(g);
-		make_eye(g, blinkl, blinkr);
-		make_pupil(g, direction, blinkl, blinkr);
-		make_eyebrows(g, v[1], v[2]);
-		make_nose(g);
-		make_mouth(g, v[3], v[4], v[5], v[6], v[7]);
+		calc_scaleFactors(xCoordinate, yCoordinate, height, width);
+		make_head(graphics);
+		make_eye(graphics, blinkl, blinkr);
+		make_pupil(graphics, direction, blinkl, blinkr);
+		make_eyebrows(graphics, vectorValues[1], vectorValues[2]);
+		make_nose(graphics);
+		make_mouth(graphics, vectorValues[3], vectorValues[4], vectorValues[5], vectorValues[6], vectorValues[7]);
 	}
 
 	/**
@@ -84,11 +84,11 @@ public class FacePaint extends JPanel {
 	 * @param height Specifies the height of the window
 	 * @param width Specifies the width of the window
 	 */
-	public void calc_scaleFactors(int x, int y, int height, int width) {
+	public void calc_scaleFactors(int xCoordinate, int yCoordinate, int height, int width) {
 		x_factor = width / 100.0;
 		y_factor = height / 100.0;
-		x_origin = x;
-		y_origin = y;
+		x_origin = xCoordinate;
+		y_origin = yCoordinate;
 	}
 
 	/**
@@ -103,8 +103,8 @@ public class FacePaint extends JPanel {
 	 * Makes outer structure of the face
 	 * @param g Is a Graphics Object
 	 */
-	public void make_head(Graphics g) {
-		createCircle(g, 50, 50, head_radiusval);
+	public void make_head(Graphics graphics) {
+		createCircle(graphics, 50, 50, head_radiusval);
 	}
 
 	/**
@@ -113,20 +113,20 @@ public class FacePaint extends JPanel {
 	 * @param bl Contains value for blinking of the left eye
 	 * @param br Contains value for blinking of the right eye
 	 */
-	public void make_eye(Graphics g, boolean bl, boolean br) {
-		if (bl == true && br == true) {
-			createLine(g, eye_left_xpos + eye_radiusval, eye_ypos, eye_left_xpos - eye_radiusval, eye_ypos);
-			createLine(g, eye_right_xpos - eye_radiusval, eye_ypos, eye_right_xpos + eye_radiusval, eye_ypos);
-		} else if (bl == true) {
+	public void make_eye(Graphics graphics, boolean blinkLeft, boolean blinkRight) {
+		if (blinkLeft == true && blinkRight == true) {
+			createLine(graphics, eye_left_xpos + eye_radiusval, eye_ypos, eye_left_xpos - eye_radiusval, eye_ypos);
+			createLine(graphics, eye_right_xpos - eye_radiusval, eye_ypos, eye_right_xpos + eye_radiusval, eye_ypos);
+		} else if (blinkLeft == true) {
 
-			createOval(g, eye_left_xpos, eye_ypos, eye_radiusval, eye_radiusval);
-			createLine(g, eye_right_xpos - eye_radiusval, eye_ypos, eye_right_xpos + eye_radiusval, eye_ypos);
-		} else if (br == true) {
-			createLine(g, eye_left_xpos + eye_radiusval, eye_ypos, eye_left_xpos - eye_radiusval, eye_ypos);
-			createOval(g, eye_right_xpos, eye_ypos, eye_radiusval, eye_radiusval);
+			createOval(graphics, eye_left_xpos, eye_ypos, eye_radiusval, eye_radiusval);
+			createLine(graphics, eye_right_xpos - eye_radiusval, eye_ypos, eye_right_xpos + eye_radiusval, eye_ypos);
+		} else if (blinkRight == true) {
+			createLine(graphics, eye_left_xpos + eye_radiusval, eye_ypos, eye_left_xpos - eye_radiusval, eye_ypos);
+			createOval(graphics, eye_right_xpos, eye_ypos, eye_radiusval, eye_radiusval);
 		} else {
-			createOval(g, eye_left_xpos, eye_ypos, eye_radiusval, eye_radiusval);
-			createOval(g, eye_right_xpos, eye_ypos, eye_radiusval, eye_radiusval);
+			createOval(graphics, eye_left_xpos, eye_ypos, eye_radiusval, eye_radiusval);
+			createOval(graphics, eye_right_xpos, eye_ypos, eye_radiusval, eye_radiusval);
 		}
 	}
 
@@ -137,59 +137,59 @@ public class FacePaint extends JPanel {
 	 * @param bl Contains value for blinking of the left eye
 	 * @param br Contains value for blinking of the right eye
 	 */
-	public void make_pupil(Graphics g, String direction, boolean bl, boolean br) {
+	public void make_pupil(Graphics graphics, String direction, boolean blinkLeft, boolean blinkRight) {
 		double d = 0.5;
 		if (direction.equals("Right")) {
 			d = 0.3;
-			fillOval(g, eye_left_xpos + (int) ((d - 0.5) * 10), eye_ypos, pupil_size, pupil_size);
-			fillOval(g, eye_right_xpos + (int) ((d - 0.5) * 10), eye_ypos, pupil_size, pupil_size);
+			fillOval(graphics, eye_left_xpos + (int) ((d - 0.5) * 10), eye_ypos, pupil_size, pupil_size);
+			fillOval(graphics, eye_right_xpos + (int) ((d - 0.5) * 10), eye_ypos, pupil_size, pupil_size);
 		} else if (direction.equals("Left")) {
 			d = 0.3;
-			fillOval(g, eye_left_xpos - (int) ((d - 0.5) * 10), eye_ypos, pupil_size, pupil_size);
-			fillOval(g, eye_right_xpos - (int) ((d - 0.5) * 10), eye_ypos, pupil_size, pupil_size);
+			fillOval(graphics, eye_left_xpos - (int) ((d - 0.5) * 10), eye_ypos, pupil_size, pupil_size);
+			fillOval(graphics, eye_right_xpos - (int) ((d - 0.5) * 10), eye_ypos, pupil_size, pupil_size);
 		} else {
-			if (bl == true && br == false) {
-				fillOval(g, eye_left_xpos - (int) ((d - 0.5) * 10), eye_ypos, pupil_size, pupil_size);
-			} else if (br == true && bl == false) {
-				fillOval(g, eye_right_xpos + (int) ((d - 0.5) * 10), eye_ypos, pupil_size, pupil_size);
+			if (blinkLeft == true && blinkRight == false) {
+				fillOval(graphics, eye_left_xpos - (int) ((d - 0.5) * 10), eye_ypos, pupil_size, pupil_size);
+			} else if (blinkRight == true && blinkLeft == false) {
+				fillOval(graphics, eye_right_xpos + (int) ((d - 0.5) * 10), eye_ypos, pupil_size, pupil_size);
 
-			} else if (bl == false && br == false) {
-				fillOval(g, eye_left_xpos - (int) ((d - 0.5) * 10), eye_ypos, pupil_size, pupil_size);
-				fillOval(g, eye_right_xpos + (int) ((d - 0.5) * 10), eye_ypos, pupil_size, pupil_size);
+			} else if (blinkLeft == false && blinkRight == false) {
+				fillOval(graphics, eye_left_xpos - (int) ((d - 0.5) * 10), eye_ypos, pupil_size, pupil_size);
+				fillOval(graphics, eye_right_xpos + (int) ((d - 0.5) * 10), eye_ypos, pupil_size, pupil_size);
 			}
 		}
 	}
 
 	/**
 	 * Makes the eyebrows along with the various expressions needed.
-	 * @param g Is a Graphics Object
-	 * @param p1 Raises the brows according to this input
-	 * @param p2 Furrows the brows according to this input
+	 * @param graphics Is a Graphics Object
+	 * @param raiseBrow Raises the brows according to this input
+	 * @param furrowBrow Furrows the brows according to this input
 	 */
-	public void make_eyebrows(Graphics g, double p1, double p2) {
+	public void make_eyebrows(Graphics graphics, double raiseBrow, double furrowBrow) {
 		int y1, y2;
-		if (p1 != 0.0) {
-			y1 = eyebrow_y + (int) (p1 * 5);
-			y2 = eyebrow_y - (int) (p1 * 5);
-		} else if (p2 != 0.0) {
-			y1 = eyebrow_y - (int) (p2 * 5);
-			y2 = eyebrow_y + (int) (p2 * 5);
+		if (raiseBrow != 0.0) {
+			y1 = eyebrow_y + (int) (raiseBrow * 5);
+			y2 = eyebrow_y - (int) (raiseBrow * 5);
+		} else if (furrowBrow != 0.0) {
+			y1 = eyebrow_y - (int) (furrowBrow * 5);
+			y2 = eyebrow_y + (int) (furrowBrow * 5);
 		} else {
 			y1 = eyebrow_y;
 			y2 = eyebrow_y;
 		}
-		createLine(g, eyebrow_left_left_x, y1, eyebrow_left_right_x, y2);
-		createLine(g, eyebrow_right_left_x, y2, eyebrow_right_right_x, y1);
+		createLine(graphics, eyebrow_left_left_x, y1, eyebrow_left_right_x, y2);
+		createLine(graphics, eyebrow_right_left_x, y2, eyebrow_right_right_x, y1);
 	}
 
 	/**
 	 * Makes the nose.
 	 * @param g Is a Graphics Object
 	 */
-	public void make_nose(Graphics g) {
-		createLine(g, nose_apex_x, nose_apex_y, nose_apex_x - (nose_width / 2), nose_ypos);
-		createLine(g, nose_apex_x - (nose_width / 2), nose_ypos, nose_apex_x + (nose_width / 2), nose_ypos);
-		createLine(g, nose_apex_x + (nose_width / 2), nose_ypos, nose_apex_x, nose_apex_y);
+	public void make_nose(Graphics graphics) {
+		createLine(graphics, nose_apex_x, nose_apex_y, nose_apex_x - (nose_width / 2), nose_ypos);
+		createLine(graphics, nose_apex_x - (nose_width / 2), nose_ypos, nose_apex_x + (nose_width / 2), nose_ypos);
+		createLine(graphics, nose_apex_x + (nose_width / 2), nose_ypos, nose_apex_x, nose_apex_y);
 	}
 
 	/**
@@ -201,7 +201,7 @@ public class FacePaint extends JPanel {
 	 * @param p6 Contains input for making the face smirk right
 	 * @param p7 Contains input for making the face laugh
 	 */
-	public void make_mouth(Graphics g, double p3, double p4, double p5, double p6, double p7) {
+	public void make_mouth(Graphics g, double smile, double clench, double leftSmirk, double rightSmirk, double laugh) {
 		double x1 = 40;
 		double y1 = mouth_ypos;
 		double x2 = 60;
@@ -209,32 +209,32 @@ public class FacePaint extends JPanel {
 		double x3 = ((x2 - x1) / 2) + x1;
 		double y3 = mouth_ypos;
 		double y3lower = mouth_ypos;
-		if (p3 > 0.0) {
-			x1 = x1 - (p3 * 5);
-			x2 = x2 + (p3 * 5);
-			y3 = y3 + ((p3 / 2.0) * 10);
+		if (smile > 0.0) {
+			x1 = x1 - (smile * 5);
+			x2 = x2 + (smile * 5);
+			y3 = y3 + ((smile / 2.0) * 10);
 			y3lower = y3;
 		}
-		if (p4 > 0.0) {
-			x1 = x1 - (p4 * 5);
-			x2 = x2 + (p4 * 5);
-			y3 = y3 - ((p4 / 2.0) * 10);
-			y3lower = y3lower + ((p4 / 2.0) * 10);
+		if (clench > 0.0) {
+			x1 = x1 - (clench * 5);
+			x2 = x2 + (clench * 5);
+			y3 = y3 - ((clench / 2.0) * 10);
+			y3lower = y3lower + ((clench / 2.0) * 10);
 		}
-		if (p5 > 0.0) {
-			x1 = x1 + (p5 * 3);
-			x2 = x2 + (p5 * 3);
-			y2 = y2 - (p5 * 5);
+		if (leftSmirk > 0.0) {
+			x1 = x1 + (leftSmirk * 3);
+			x2 = x2 + (leftSmirk * 3);
+			y2 = y2 - (leftSmirk * 5);
 		}
-		if (p6 > 0.0) {
-			x1 = x1 - (p6 * 3);
-			x2 = x2 - (p6 * 3);
-			y1 = y1 - (p6 * 5);
+		if (rightSmirk > 0.0) {
+			x1 = x1 - (rightSmirk * 3);
+			x2 = x2 - (rightSmirk * 3);
+			y1 = y1 - (rightSmirk * 5);
 		}
-		if (p7 > 0.0) {
-			x1 = x1 - (p7 * 5);
-			x2 = x2 + (p7 * 5);
-			y3lower = y3lower + ((p7 / 2.0) * 10);
+		if (laugh > 0.0) {
+			x1 = x1 - (laugh * 5);
+			x2 = x2 + (laugh * 5);
+			y3lower = y3lower + ((laugh / 2.0) * 10);
 		}
 		make_lips(g, x1, y1, x2, y2, x3, y3);
 		make_lips(g, x1, y1, x2, y2, x3, y3lower);
@@ -250,24 +250,24 @@ public class FacePaint extends JPanel {
 	 * @param x3 Contains the center point of the lips on the horizontal plane
 	 * @param y3 Contains the center point of the lips on the vertical plane
 	 */
-	public void make_lips(Graphics g, double x1, double y1, double x2, double y2, double x3, double y3) {
+	public void make_lips(Graphics graphics, double lipsHorizonatalStart, double lipsVerticalStart, double lipsHorizontalEnd, double lipsVerticalEnd, double lipsHorizonatlCenter, double lipsVerticalCenter) {
 		int i, new_x, new_y, last_x, last_y;
-		double denom = (Math.pow(x1, 2) * (x2 - x3)) + (x1 * (Math.pow(x3, 2) - Math.pow(x2, 2)))
-				+ (Math.pow(x2, 2) * x3) + -(Math.pow(x3, 2) * x2);
+		double denom = (Math.pow(lipsHorizonatalStart, 2) * (lipsHorizontalEnd - lipsHorizonatlCenter)) + (lipsHorizonatalStart * (Math.pow(lipsHorizonatlCenter, 2) - Math.pow(lipsHorizontalEnd, 2)))
+				+ (Math.pow(lipsHorizontalEnd, 2) * lipsHorizonatlCenter) + -(Math.pow(lipsHorizonatlCenter, 2) * lipsHorizontalEnd);
 
-		double a = ((y1 * (x2 - x3)) + (x1 * (y3 - y2)) + (y2 * x3) + -(y3 * x2)) / denom;
+		double a = ((lipsVerticalStart * (lipsHorizontalEnd - lipsHorizonatlCenter)) + (lipsHorizonatalStart * (lipsVerticalCenter - lipsVerticalEnd)) + (lipsVerticalEnd * lipsHorizonatlCenter) + -(lipsVerticalCenter * lipsHorizontalEnd)) / denom;
 
-		double bb = ((Math.pow(x1, 2) * (y2 - y3)) + (y1 * (Math.pow(x3, 2) - Math.pow(x2, 2))) + (Math.pow(x2, 2) * y3)
-				+ -(Math.pow(x3, 2) * y2)) / denom;
+		double bb = ((Math.pow(lipsHorizonatalStart, 2) * (lipsVerticalEnd - lipsVerticalCenter)) + (lipsVerticalStart * (Math.pow(lipsHorizonatlCenter, 2) - Math.pow(lipsHorizontalEnd, 2))) + (Math.pow(lipsHorizontalEnd, 2) * lipsVerticalCenter)
+				+ -(Math.pow(lipsHorizonatlCenter, 2) * lipsVerticalEnd)) / denom;
 
-		double c = ((Math.pow(x1, 2) * ((x2 * y3) - (x3 * y2)))
-				+ (x1 * ((Math.pow(x3, 2) * y2) - (Math.pow(x2, 2) * y3)))
-				+ (y1 * ((Math.pow(x2, 2) * x3) - (Math.pow(x3, 2) * x2)))) / denom;
+		double c = ((Math.pow(lipsHorizonatalStart, 2) * ((lipsHorizontalEnd * lipsVerticalCenter) - (lipsHorizonatlCenter * lipsVerticalEnd)))
+				+ (lipsHorizonatalStart * ((Math.pow(lipsHorizonatlCenter, 2) * lipsVerticalEnd) - (Math.pow(lipsHorizontalEnd, 2) * lipsVerticalCenter)))
+				+ (lipsVerticalStart * ((Math.pow(lipsHorizontalEnd, 2) * lipsHorizonatlCenter) - (Math.pow(lipsHorizonatlCenter, 2) * lipsHorizontalEnd)))) / denom;
 
-		for (i = (int) x1, last_x = (int) x1, last_y = (int) y1; i <= x2; i++) {
+		for (i = (int) lipsHorizonatalStart, last_x = (int) lipsHorizonatalStart, last_y = (int) lipsVerticalStart; i <= lipsHorizontalEnd; i++) {
 			new_x = i;
 			new_y = (int) ((a * Math.pow(i, 2)) + (bb * i) + c);
-			createLine(g, last_x, last_y, new_x, new_y);
+			createLine(graphics, last_x, last_y, new_x, new_y);
 			last_x = new_x;
 			last_y = new_y;
 		}
@@ -280,9 +280,9 @@ public class FacePaint extends JPanel {
 	 * @param y Contains the y position with respect to the background
 	 * @param radius Contains the radius of the circle to be drawn
 	 */
-	public void createCircle(Graphics g, int x, int y, int radius) {
-		g.drawOval(scale_x(x - radius) + x_origin, scale_y(y - radius) + y_origin, scale_x(radius * 2),
-				scale_y(radius * 2));
+	public void createCircle(Graphics graphics, int xPosition, int yPosition, int circleRadius) {
+		graphics.drawOval(scale_x(xPosition - circleRadius) + x_origin, scale_y(yPosition - circleRadius) + y_origin, scale_x(circleRadius * 2),
+				scale_y(circleRadius * 2));
 	}
 
 	/**
@@ -293,9 +293,9 @@ public class FacePaint extends JPanel {
 	 * @param height Contains the height to the oval to be drawn
 	 * @param width Contains the width of the oval to be drawn
 	 */
-	public void createOval(Graphics g, int x, int y, int height, int width) {
-		g.drawOval(scale_x(x - width) + x_origin, scale_y(y - height) + y_origin, scale_x(width * 2),
-				scale_y(height * 2));
+	public void createOval(Graphics graphics, int xPosition, int yPosition, int ovalHeight, int ovalWidth) {
+		graphics.drawOval(scale_x(xPosition - ovalWidth) + x_origin, scale_y(yPosition - ovalHeight) + y_origin, scale_x(ovalWidth * 2),
+				scale_y(ovalHeight * 2));
 	}
 
 	/**
@@ -307,9 +307,9 @@ public class FacePaint extends JPanel {
 	 * @param height Contains the height till which the oval to be filled
 	 * @param width Contains the width till which the oval to be filled
 	 */
-	public void fillOval(Graphics g, int x, int y, int height, int width) {
-		g.fillOval(scale_x(x - width) + x_origin, scale_y(y - height) + y_origin, scale_x(width * 2),
-				scale_y(height * 2));
+	public void fillOval(Graphics graphics, int xPosition, int yPosition, int hollowOvalHeight, int hollowOvalWidth) {
+		graphics.fillOval(scale_x(xPosition - hollowOvalWidth) + x_origin, scale_y(yPosition - hollowOvalHeight) + y_origin, scale_x(hollowOvalWidth * 2),
+				scale_y(hollowOvalHeight * 2));
 	}
 
 	/**
@@ -320,8 +320,8 @@ public class FacePaint extends JPanel {
 	 * @param x2 Contains the horizontal ending position of the line
 	 * @param y2 Contains the vertical ending position of the line
 	 */
-	public void createLine(Graphics g, int x1, int y1, int x2, int y2) {
-		g.drawLine(scale_x(x1) + x_origin, scale_y(y1) + x_origin, scale_x(x2) + x_origin, scale_y(y2) + x_origin);
+	public void createLine(Graphics graphics, int lineHorizontalStart, int lineVerticalStart, int lineHorizontalEnd, int lineVerticalEnd) {
+		graphics.drawLine(scale_x(lineHorizontalStart) + x_origin, scale_y(lineVerticalStart) + x_origin, scale_x(lineHorizontalEnd) + x_origin, scale_y(lineVerticalEnd) + x_origin);
 	}
 
 	/**
@@ -329,8 +329,8 @@ public class FacePaint extends JPanel {
 	 * @param x Parameter needed to be scaled
 	 * @return Scaled parameter
 	 */
-	public int scale_x(int x) {
-		return (int) (x * x_factor);
+	public int scale_x(int xScale) {
+		return (int) (xScale * x_factor);
 	}
 
 	/**
@@ -338,15 +338,15 @@ public class FacePaint extends JPanel {
 	 * @param y Parameter needed to be scaled
 	 * @return Scaled parameter
 	 */
-	public int scale_y(int y) {
-		return (int) (y * y_factor);
+	public int scale_y(int yScale) {
+		return (int) (yScale * y_factor);
 	}
 
 	/**
 	 * Paints the desired face.
 	 */
-	public void paintComponent(Graphics g) {
-		drawFace(g,0, 0, getHeight(), getWidth());
+	public void paintComponent(Graphics graphics) {
+		drawFace(graphics,0, 0, getHeight(), getWidth());
 	}
 
 }

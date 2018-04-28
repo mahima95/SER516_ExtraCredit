@@ -24,25 +24,29 @@ import model.FaceData;
 @SuppressWarnings("serial")
 /**
  * 
- * 
+ * Initializes the ClientUI This class acts an observer for the values that are
+ * sent from the server Once notified it updates the both expressive and
+ * affective graphs along with expressions
  *
  */
 public class ClientUi extends JFrame implements Observer {
 
-	
 	private ExpressiveController expressiveController;
 	private AffectiveController affectiveController;
 	final JPanel panel = new JPanel();
 	final JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 	final JMenuBar menuBar = new JMenuBar();
-	final JMenu mnFile = new JMenu("File");
-	final JMenu mntmApplication = new JMenu("Application");
-	final JMenu mntmConnection = new JMenu("Connection");
+	final JMenu menuFile = new JMenu("File");
+	final JMenu menuApplication = new JMenu("Application");
+	final JMenu menuConnection = new JMenu("Connection");
 	final JMenuItem serverConsole = new JMenuItem("Open Server");
 	JPanel facePanel;
+
 	/**
 	 * Creates the application
-	 * @param expressiveController Contains the expression controller object
+	 * 
+	 * @param expressiveController
+	 *            Contains the expression controller object
 	 */
 	public ClientUi(ExpressiveController expressiveController, AffectiveController affectiveController) {
 		this.expressiveController = expressiveController;
@@ -57,12 +61,10 @@ public class ClientUi extends JFrame implements Observer {
 	 */
 	private void initialize(JPanel expressiveView, JPanel affectiveView) {
 
-		
 		panel.setBounds(0, 0, 698, 402);
 		this.getContentPane().add(panel);
 		panel.setLayout(null);
 
-		
 		tabbedPane.setBounds(0, 22, 698, 380);
 		panel.add(tabbedPane);
 
@@ -70,41 +72,39 @@ public class ClientUi extends JFrame implements Observer {
 
 		tabbedPane.addTab("Affective", null, affectiveView, null);
 
-		
 		menuBar.setBounds(0, 0, 698, 22);
 		panel.add(menuBar);
 
-		
-		menuBar.add(mnFile);
+		menuBar.add(menuFile);
 
-		
-		mnFile.add(mntmApplication);
+		menuFile.add(menuApplication);
 
-		
-		mnFile.add(mntmConnection);
+		menuFile.add(menuConnection);
 
-		
-		mntmApplication.add(serverConsole);
+		menuApplication.add(serverConsole);
 
 		JMenuItem serverConnect = new JMenuItem("Connect to Server");
-		mntmConnection.add(serverConnect);
+		menuConnection.add(serverConnect);
 
 		JMenuItem exitMenuItem = new JMenuItem("Exit");
-		mnFile.add(exitMenuItem);
+		menuFile.add(exitMenuItem);
 
 		new MenuItemController(serverConnect, serverConsole, exitMenuItem);
 		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	}
 
 	@Override
+	/**
+	 * Method on being invoked changes the values of the graphs and expressions
+	 * accordingly
+	 */
 	public void update(Observable o, Object arg) {
 
 		FaceData faceData = (FaceData) arg;
 		this.expressiveController.updateTime(faceData);
 		this.expressiveController.updateGraph(faceData.getFaceExpressionData());
-	    this.affectiveController.updateGraph(faceData.getFaceAffectiveData());
-		
+		this.affectiveController.updateGraph(faceData.getFaceAffectiveData());
+
 	}
-	
-		
+
 }

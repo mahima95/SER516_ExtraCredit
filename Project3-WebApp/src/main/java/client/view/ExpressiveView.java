@@ -9,33 +9,78 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import utility.Constants;
- /**
-  * View for the Expression Section of the client
-  * @SER516 Project3_Team03
-  * @version 1.0
-  */
+
+/**
+ * View for the Expression Section of the client
+ * 
+ * @SER516 SER516_ExtraCredit
+ * @version 1.0
+ */
 @SuppressWarnings("serial")
-public class ExpressiveView extends JPanel{
-	
-	private ExpressiveView(JPanel facePanel, JPanel graphPanel,JPanel blinkGraph, JPanel rgtWinkGraph, JPanel lftWinkGraph, JPanel looklftGraph, JPanel lookrgtGraph, JPanel furrowGraph,
-			JPanel raiseGraph, JPanel smileGraph, JPanel clenchGraph, JPanel lftSmirkGraph, JPanel rgtSmirkGraph, JPanel laughGraph){
-		
+public class ExpressiveView extends JPanel {
+	private JLabel blinkLabel;
+	private JLabel rgtWinkLabel;
+	private JLabel lftWinkLabel;
+	private JLabel looklftLabel;
+	private JLabel lookrgtLabel;
+	private JLabel furrowLabel;
+	private JLabel raiseLabel;
+	private JLabel smileLabel;
+	private JLabel clenchLabel;
+	private JLabel lftSmirkLabel;
+	private JLabel rgtSmirkLabel;
+	private JLabel laughLabel;
+	private JPanel blinkGraphPanel;
+	private JPanel rgtWinkGraphPanel;
+	private JPanel lftWinkGraphPanel;
+	private JPanel rgtSmrGraphPanel;
+	private JPanel lftSmrGraphPanel;
+	private JPanel clenchGraphPanel;
+	private JPanel laughGraphPanel;
+	private JPanel smileGraphPanel;
+	private JPanel raiseGraphPanel;
+	private JPanel furrowGraphPanel;
+	private JPanel lookGraphPanel;
+
+	/**
+	 * Parametrized Constructor and positions the panels and the graphs in the
+	 * expressive view panel in clientUI
+	 * 
+	 * @param facePanel
+	 * @param graphPanel
+	 * @param blinkGraph
+	 * @param rgtWinkGraph
+	 * @param lftWinkGraph
+	 * @param looklftGraph
+	 * @param lookrgtGraph
+	 * @param furrowGraph
+	 * @param raiseGraph
+	 * @param smileGraph
+	 * @param clenchGraph
+	 * @param lftSmirkGraph
+	 * @param rgtSmirkGraph
+	 * @param laughGraph
+	 */
+	private ExpressiveView(JPanel facePanel, JPanel graphPanel, JPanel blinkGraph, JPanel rgtWinkGraph,
+			JPanel lftWinkGraph, JPanel looklftGraph, JPanel lookrgtGraph, JPanel furrowGraph, JPanel raiseGraph,
+			JPanel smileGraph, JPanel clenchGraph, JPanel lftSmirkGraph, JPanel rgtSmirkGraph, JPanel laughGraph) {
+
 		this.setLayout(null);
 		facePanel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		facePanel.setBounds(0, 28, 326, 280);
-		this.add(facePanel); 
-		
+		this.add(facePanel);
+
 		graphPanel.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		graphPanel.setBounds(325, 28, 368, 313);
 		graphPanel.setLayout(null);
 		this.add(graphPanel);
-		
+
 		blinkGraph.setBounds(90, 10, 260, 20);
 		blinkGraph.setBackground(Constants.GRAPHPANEL);
 		blinkGraph.setBorder(BorderFactory.createLineBorder(Color.black));
 		graphPanel.add(blinkGraph);
 
-		JLabel blinkLabel = new JLabel("Blink\r\n");
+		blinkLabel = new JLabel("Blink\r\n");
 		blinkLabel.setForeground(Constants.GRAPHLABEL_FOREGROUND);
 		blinkLabel.setOpaque(true);
 		blinkLabel.setBackground(Constants.GRAPHLABEL_BACKGROUND);
@@ -48,7 +93,7 @@ public class ExpressiveView extends JPanel{
 		rgtWinkGraph.setBorder(BorderFactory.createLineBorder(Color.black));
 		graphPanel.add(rgtWinkGraph);
 
-		JLabel rgtWinkLabel = new JLabel("Right Wink");
+		rgtWinkLabel = new JLabel("Right Wink");
 		rgtWinkLabel.setBackground(Constants.GRAPHLABEL_BACKGROUND);
 		rgtWinkLabel.setForeground(Constants.GRAPHLABEL_FOREGROUND);
 		rgtWinkLabel.setOpaque(true);
@@ -61,7 +106,7 @@ public class ExpressiveView extends JPanel{
 		lftWinkGraph.setBorder(BorderFactory.createLineBorder(Color.black));
 		graphPanel.add(lftWinkGraph);
 
-		final JLabel lftWinkLabel = new JLabel("Left Wink");
+		lftWinkLabel = new JLabel("Left Wink");
 		lftWinkLabel.setOpaque(true);
 		lftWinkLabel.setForeground(Constants.GRAPHLABEL_FOREGROUND);
 		lftWinkLabel.setBackground(Constants.GRAPHLABEL_BACKGROUND);
@@ -74,20 +119,20 @@ public class ExpressiveView extends JPanel{
 		looklftGraph.setBorder(BorderFactory.createLineBorder(Color.black));
 		graphPanel.add(looklftGraph);
 
-		final JLabel looklftLabel = new JLabel("Look left");
+		looklftLabel = new JLabel("Look left");
 		looklftLabel.setOpaque(true);
 		looklftLabel.setForeground(Constants.GRAPHLABEL_FOREGROUND);
 		looklftLabel.setBackground(Constants.GRAPHLABEL_BACKGROUND);
 		looklftLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		looklftLabel.setBounds(10, 85, 75, 20);
 		graphPanel.add(looklftLabel);
-		
+
 		lookrgtGraph.setBounds(90, 110, 260, 20);
 		lookrgtGraph.setBackground(Constants.GRAPHPANEL);
 		lookrgtGraph.setBorder(BorderFactory.createLineBorder(Color.black));
 		graphPanel.add(lookrgtGraph);
 
-		final JLabel lookrgtLabel = new JLabel("Look right");
+		lookrgtLabel = new JLabel("Look right");
 		lookrgtLabel.setOpaque(true);
 		lookrgtLabel.setForeground(Constants.GRAPHLABEL_FOREGROUND);
 		lookrgtLabel.setBackground(Constants.GRAPHLABEL_BACKGROUND);
@@ -100,7 +145,7 @@ public class ExpressiveView extends JPanel{
 		furrowGraph.setBorder(BorderFactory.createLineBorder(Color.black));
 		graphPanel.add(furrowGraph);
 
-		final JLabel furrowLabel = new JLabel("Furrow Brow\r\n");
+		furrowLabel = new JLabel("Furrow Brow\r\n");
 		furrowLabel.setOpaque(true);
 		furrowLabel.setForeground(Constants.GRAPHLABEL_FOREGROUND);
 		furrowLabel.setBackground(Constants.GRAPHLABEL_BACKGROUND);
@@ -113,7 +158,7 @@ public class ExpressiveView extends JPanel{
 		raiseGraph.setBorder(BorderFactory.createLineBorder(Color.black));
 		graphPanel.add(raiseGraph);
 
-		final JLabel raiseLabel = new JLabel("Raise Brow");
+		raiseLabel = new JLabel("Raise Brow");
 		raiseLabel.setOpaque(true);
 		raiseLabel.setForeground(Constants.GRAPHLABEL_FOREGROUND);
 		raiseLabel.setBackground(Constants.GRAPHLABEL_BACKGROUND);
@@ -125,7 +170,7 @@ public class ExpressiveView extends JPanel{
 		smileGraph.setBorder(BorderFactory.createLineBorder(Color.black));
 		graphPanel.add(smileGraph);
 
-		final JLabel smileLabel = new JLabel("Smile");
+		smileLabel = new JLabel("Smile");
 		smileLabel.setOpaque(true);
 		smileLabel.setForeground(Constants.GRAPHLABEL_FOREGROUND);
 		smileLabel.setBackground(Constants.GRAPHLABEL_BACKGROUND);
@@ -137,7 +182,7 @@ public class ExpressiveView extends JPanel{
 		clenchGraph.setBorder(BorderFactory.createLineBorder(Color.black));
 		graphPanel.add(clenchGraph);
 
-		final JLabel clenchLabel = new JLabel("Clench");
+		clenchLabel = new JLabel("Clench");
 		clenchLabel.setOpaque(true);
 		clenchLabel.setForeground(Constants.GRAPHLABEL_FOREGROUND);
 		clenchLabel.setBackground(Constants.GRAPHLABEL_BACKGROUND);
@@ -149,7 +194,7 @@ public class ExpressiveView extends JPanel{
 		lftSmirkGraph.setBorder(BorderFactory.createLineBorder(Color.black));
 		graphPanel.add(lftSmirkGraph);
 
-		final JLabel lftSmirkLabel = new JLabel("Left Smirk");
+		lftSmirkLabel = new JLabel("Left Smirk");
 		lftSmirkLabel.setOpaque(true);
 		lftSmirkLabel.setForeground(Constants.GRAPHLABEL_FOREGROUND);
 		lftSmirkLabel.setBackground(Constants.GRAPHLABEL_BACKGROUND);
@@ -161,7 +206,7 @@ public class ExpressiveView extends JPanel{
 		rgtSmirkGraph.setBorder(BorderFactory.createLineBorder(Color.black));
 		graphPanel.add(rgtSmirkGraph);
 
-		final JLabel rgtSmirkLabel = new JLabel("Right Smirk");
+		rgtSmirkLabel = new JLabel("Right Smirk");
 		rgtSmirkLabel.setOpaque(true);
 		rgtSmirkLabel.setForeground(Constants.GRAPHLABEL_FOREGROUND);
 		rgtSmirkLabel.setBackground(Constants.GRAPHLABEL_BACKGROUND);
@@ -173,65 +218,64 @@ public class ExpressiveView extends JPanel{
 		laughGraph.setBorder(BorderFactory.createLineBorder(Color.black));
 		graphPanel.add(laughGraph);
 
-		final JLabel laughLabel = new JLabel("Laugh");
+		laughLabel = new JLabel("Laugh");
 		laughLabel.setOpaque(true);
 		laughLabel.setForeground(Constants.GRAPHLABEL_FOREGROUND);
 		laughLabel.setBackground(Constants.GRAPHLABEL_BACKGROUND);
 		laughLabel.setBounds(10, 285, 75, 20);
 		graphPanel.add(laughLabel);
 
-		final JPanel blinkGraphPanel = new JPanel();
+		blinkGraphPanel = new JPanel();
 		blinkGraphPanel.setBounds(82, 11, 276, 20);
 		graphPanel.add(blinkGraphPanel);
 
-		final JPanel rgtWinkGraphPanel = new JPanel();
+		rgtWinkGraphPanel = new JPanel();
 		rgtWinkGraphPanel.setBounds(82, 36, 276, 20);
 		graphPanel.add(rgtWinkGraphPanel);
 
-		final JPanel lftWinkGraphPanel = new JPanel();
+		lftWinkGraphPanel = new JPanel();
 		lftWinkGraphPanel.setBounds(82, 65, 276, 20);
 		graphPanel.add(lftWinkGraphPanel);
 
-		final JPanel lookGraphPanel = new JPanel();
+		lookGraphPanel = new JPanel();
 		lookGraphPanel.setBounds(82, 90, 276, 20);
 		graphPanel.add(lookGraphPanel);
 
-		final JPanel furrowGraphPanel = new JPanel();
+		furrowGraphPanel = new JPanel();
 		furrowGraphPanel.setBounds(82, 115, 276, 20);
 		graphPanel.add(furrowGraphPanel);
 
-		final JPanel raiseGraphPanel = new JPanel();
+		raiseGraphPanel = new JPanel();
 		raiseGraphPanel.setBounds(82, 140, 276, 20);
 		graphPanel.add(raiseGraphPanel);
 
-		final JPanel smileGraphPanel = new JPanel();
+		smileGraphPanel = new JPanel();
 		smileGraphPanel.setBounds(82, 165, 276, 20);
 		graphPanel.add(smileGraphPanel);
 
-		final JPanel clenchGraphPanel = new JPanel();
+		clenchGraphPanel = new JPanel();
 		clenchGraphPanel.setBounds(82, 190, 276, 20);
 		graphPanel.add(clenchGraphPanel);
 
-		final JPanel lftSmrGraphPanel = new JPanel();
+		lftSmrGraphPanel = new JPanel();
 		lftSmrGraphPanel.setBounds(82, 215, 276, 20);
 		graphPanel.add(lftSmrGraphPanel);
 
-		final JPanel rgtSmrGraphPanel = new JPanel();
+		rgtSmrGraphPanel = new JPanel();
 		rgtSmrGraphPanel.setBounds(82, 245, 276, 20);
 		graphPanel.add(rgtSmrGraphPanel);
 
-		final JPanel laughGraphPanel = new JPanel();
+		laughGraphPanel = new JPanel();
 		laughGraphPanel.setBounds(82, 276, 276, 18);
 		graphPanel.add(laughGraphPanel);
-		
+
 	}
 
 	/*
 	 * Builder Class for ExpressionView
 	 */
-		
-	public static class ExpressionViewBuilder
-	{
+
+	public static class ExpressionViewBuilder {
 		JPanel buildfacePanel;
 		JPanel buildgraphPanel;
 		JPanel buildblinkGraph;
@@ -246,47 +290,38 @@ public class ExpressiveView extends JPanel{
 		JPanel buildlftSmirkGraph;
 		JPanel buildrgtSmirkGraph;
 		JPanel buildlaughGraph;
-		
-		public ExpressionViewBuilder(JPanel facePanel, JPanel graphPanel,JPanel blinkGraph, JPanel rgtWinkGraph, JPanel lftWinkGraph, JPanel looklftGraph, JPanel lookrgtGraph, JPanel furrowGraph,
-				JPanel raiseGraph, JPanel smileGraph, JPanel clenchGraph, JPanel lftSmirkGraph, JPanel rgtSmirkGraph, JPanel laughGraph)
-		{
-			this.buildfacePanel=facePanel;
-			this.buildgraphPanel=graphPanel;
-			this.buildblinkGraph=blinkGraph;
-			this.buildrgtWinkGraph=rgtWinkGraph;
-			this. buildlftWinkGraph=lftWinkGraph;
-			 this.buildlooklftGraph=looklftGraph;
-			this. buildlookrgtGraph=lookrgtGraph;
-			this. buildfurrowGraph=furrowGraph;
-			this. buildraiseGraph=raiseGraph;
-			this. buildsmileGraph=smileGraph;
-			this. buildclenchGraph=clenchGraph;
-			this.buildlftSmirkGraph=lftSmirkGraph;
-			this. buildrgtSmirkGraph=rgtSmirkGraph;
-			this. buildlaughGraph=laughGraph;
-			
+
+		public ExpressionViewBuilder(JPanel facePanel, JPanel graphPanel, JPanel blinkGraph, JPanel rgtWinkGraph,
+				JPanel lftWinkGraph, JPanel looklftGraph, JPanel lookrgtGraph, JPanel furrowGraph, JPanel raiseGraph,
+				JPanel smileGraph, JPanel clenchGraph, JPanel lftSmirkGraph, JPanel rgtSmirkGraph, JPanel laughGraph) {
+			this.buildfacePanel = facePanel;
+			this.buildgraphPanel = graphPanel;
+			this.buildblinkGraph = blinkGraph;
+			this.buildrgtWinkGraph = rgtWinkGraph;
+			this.buildlftWinkGraph = lftWinkGraph;
+			this.buildlooklftGraph = looklftGraph;
+			this.buildlookrgtGraph = lookrgtGraph;
+			this.buildfurrowGraph = furrowGraph;
+			this.buildraiseGraph = raiseGraph;
+			this.buildsmileGraph = smileGraph;
+			this.buildclenchGraph = clenchGraph;
+			this.buildlftSmirkGraph = lftSmirkGraph;
+			this.buildrgtSmirkGraph = rgtSmirkGraph;
+			this.buildlaughGraph = laughGraph;
+
 		}
-	
-		
-		
-		
-		public ExpressiveView createExpressiveView()
-		{
-			return new ExpressiveView(buildfacePanel, 
-			buildgraphPanel,
-			buildblinkGraph,
-			buildrgtWinkGraph,
-			 buildlftWinkGraph,
-			 buildlooklftGraph,
-			 buildlookrgtGraph,
-			 buildfurrowGraph,
-			 buildraiseGraph,
-			 buildsmileGraph,
-			 buildclenchGraph,
-			 buildlftSmirkGraph,
-			 buildrgtSmirkGraph,
-			 buildlaughGraph);
+
+		/**
+		 * Builder Class implementation
+		 * 
+		 * @return
+		 */
+
+		public ExpressiveView createExpressiveView() {
+			return new ExpressiveView(buildfacePanel, buildgraphPanel, buildblinkGraph, buildrgtWinkGraph,
+					buildlftWinkGraph, buildlooklftGraph, buildlookrgtGraph, buildfurrowGraph, buildraiseGraph,
+					buildsmileGraph, buildclenchGraph, buildlftSmirkGraph, buildrgtSmirkGraph, buildlaughGraph);
 		}
-		
-	}	
+
+	}
 }
