@@ -11,26 +11,38 @@ import client.service.FaceClient;
 import server.ServerMainHandler;
 
 /**
- * Controller for the menu items
+ * Controller for the menu that enables the server to be opened from client and
+ * provides an option to connect to server
  * 
- * @SER516 Project3_Team03
+ * @SER516 SER516_ExtraCredit
  * @Version 1.0
  */
 public class MenuItemController {
+	private JTextField host;
+	private JTextField port;
+	private int input;
 
+	/**
+	 * Initializes the menu on the client
+	 * 
+	 */
 	public MenuItemController(JMenuItem serverConnect, JMenuItem serverConsole, JMenuItem exit) {
-		
-		//Connects to the server.
+
 		serverConnect.addActionListener(new ActionListener() {
+			/**
+			 * Activated when user selects to connect to server Displays a pop up window
+			 * with local host and port number On establishing the connection notifies the
+			 * user about the established connection
+			 * 
+			 */
 			public void actionPerformed(ActionEvent e) {
-				JTextField host = new JTextField();
+				host = new JTextField();
 				host.setText("localhost");
-				JTextField port = new JTextField();
+				port = new JTextField();
 				port.setText("8000");
 
 				Object[] fields = { "Host Name", host, "Port", port };
-				int input = JOptionPane.showConfirmDialog(null, fields, "Connect To Server",
-						JOptionPane.OK_CANCEL_OPTION);
+				input = JOptionPane.showConfirmDialog(null, fields, "Connect To Server", JOptionPane.OK_CANCEL_OPTION);
 				if (input == JOptionPane.OK_OPTION) {
 					try {
 						FaceClient.connect(host.getText(), port.getText());
@@ -38,19 +50,25 @@ public class MenuItemController {
 						e1.printStackTrace();
 					}
 					JOptionPane.showMessageDialog(null, FaceClient.isConnected() ? "Connected to " + host.getText()
-							: "Not connected to " + host.getText());
+					: "Not connected to " + host.getText());
 				}
 			}
 		});
-		
-		//Closes the application.
+
+		/**
+		 * Closes the application
+		 * 
+		 */
 		exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ClientController.close();
 			}
 		});
-		
-		//Starts the server.
+
+		/**
+		 * Opens the server window
+		 * 
+		 */
 		serverConsole.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new ServerMainHandler();

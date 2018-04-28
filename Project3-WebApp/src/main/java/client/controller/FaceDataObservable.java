@@ -4,44 +4,57 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 import client.service.FaceClient;
-import utility.FaceData;
+import model.FaceData;
 
 /**
- * Observer data pattern 
+ * Observable class that notifies the observer when value of FaceData changes
+ * Class implements the singleton class pattern and the observer pattern
  * 
  * @SER516 SER516_ExtraCredit
  * @version 1.0
  */
 public class FaceDataObservable extends Observable {
 	private ArrayList<FaceData> faceDataList;
-	private static FaceDataObservable expressiveModelObservableInstance ;
-	private FaceDataObservable()
-	{
+	private static FaceDataObservable faceDataObservableInstance;
+
+	/**
+	 * Private constructor for implementation of singleton pattern Creates the face
+	 * client for sending and receiving JSON data
+	 * 
+	 * 
+	 */
+	private FaceDataObservable() {
 		faceDataList = new ArrayList<FaceData>();
 		FaceClient.create(this);
 	}
-	
-	public static FaceDataObservable getFaceDataObservableInstance()
-	{
-		if(expressiveModelObservableInstance == null)
-		{
-			expressiveModelObservableInstance = new FaceDataObservable();
-		}
-		return expressiveModelObservableInstance;
-	}
-	
+
 	/**
-	 * Adding face data to a list
-	 * Notifying all observers 
+	 * Method to ensure that only one instance of the class is made Implementation
+	 * of singleton pattern
 	 * 
-	 * @param fed Contains the latest affective values
+	 * 
 	 */
-	
-	public void AddToListFaceData(FaceData faceData)
-	{
+
+	public static FaceDataObservable getFaceDataObservableInstance() {
+		if (faceDataObservableInstance == null) {
+			faceDataObservableInstance = new FaceDataObservable();
+		}
+		return faceDataObservableInstance;
+	}
+
+	/**
+	 * FaceClient sends a new FaceData object with changed values which is added
+	 * into the list to signify change occurred Observers of the observable class
+	 * are notified when this change occurs
+	 * 
+	 * @param fed
+	 *            Contains the latest affective values
+	 */
+
+	public void AddToListFaceData(FaceData faceData) {
 		this.faceDataList.add(faceData);
 		setChanged();
 		this.notifyObservers(faceData);
 	}
-	
+
 }

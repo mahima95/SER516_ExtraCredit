@@ -15,19 +15,31 @@ import javax.swing.WindowConstants;
 import client.controller.AffectiveController;
 import client.controller.ExpressiveController;
 import client.controller.MenuItemController;
-import utility.FaceData;
+import model.FaceData;
 
 /**
- * @SER516 Project3_Team03
+ * @SER516 SER516_ExtraCredit
  * @Version 1.0
  */
 @SuppressWarnings("serial")
+/**
+ * 
+ * 
+ *
+ */
 public class ClientUi extends JFrame implements Observer {
 
-	JPanel facePanel;
+	
 	private ExpressiveController expressiveController;
 	private AffectiveController affectiveController;
-
+	final JPanel panel = new JPanel();
+	final JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+	final JMenuBar menuBar = new JMenuBar();
+	final JMenu mnFile = new JMenu("File");
+	final JMenu mntmApplication = new JMenu("Application");
+	final JMenu mntmConnection = new JMenu("Connection");
+	final JMenuItem serverConsole = new JMenuItem("Open Server");
+	JPanel facePanel;
 	/**
 	 * Creates the application
 	 * @param expressiveController Contains the expression controller object
@@ -45,12 +57,12 @@ public class ClientUi extends JFrame implements Observer {
 	 */
 	private void initialize(JPanel expressiveView, JPanel affectiveView) {
 
-		final JPanel panel = new JPanel();
+		
 		panel.setBounds(0, 0, 698, 402);
 		this.getContentPane().add(panel);
 		panel.setLayout(null);
 
-		final JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		
 		tabbedPane.setBounds(0, 22, 698, 380);
 		panel.add(tabbedPane);
 
@@ -58,20 +70,20 @@ public class ClientUi extends JFrame implements Observer {
 
 		tabbedPane.addTab("Affective", null, affectiveView, null);
 
-		final JMenuBar menuBar = new JMenuBar();
+		
 		menuBar.setBounds(0, 0, 698, 22);
 		panel.add(menuBar);
 
-		final JMenu mnFile = new JMenu("File");
+		
 		menuBar.add(mnFile);
 
-		final JMenu mntmApplication = new JMenu("Application");
+		
 		mnFile.add(mntmApplication);
 
-		final JMenu mntmConnection = new JMenu("Connection");
+		
 		mnFile.add(mntmConnection);
 
-		final JMenuItem serverConsole = new JMenuItem("Open Server");
+		
 		mntmApplication.add(serverConsole);
 
 		JMenuItem serverConnect = new JMenuItem("Connect to Server");
@@ -86,8 +98,7 @@ public class ClientUi extends JFrame implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		//initialize(expressiveController.expressiveView, affectiveController.affectiveView);
+
 		FaceData faceData = (FaceData) arg;
 		this.expressiveController.updateTime(faceData);
 		this.expressiveController.updateGraph(faceData.getFaceExpressionData());

@@ -15,30 +15,26 @@ import utility.Constants;
 public class ChangeColorController {
 	public ChangeColorController(final ColorSelectorButton button) {
 		button.addColorChangedListener(new ColorChangedListener() {
-			
+
 			/**
-			 * Changing colors according to Affectiveness 
+			 * Changing colors according to change in affective data
 			 * 
 			 * 
 			 */
-			
-		    public void colorChanged(Color newColor) {
-		    		if(button.getName() == "Meditation"){
-		    			Constants.meditationColor = newColor;
-		    		}
-		    		else if(button.getName() == "Engagement"){
-		    			Constants.engagementColor = newColor;
-		    		}
-		    		else if(button.getName() == "Frustation"){
-		    			Constants.frustationColor = newColor;
-		    		}
-		    		else if(button.getName() == "Excitement Short Term"){
-		    			Constants.excitementstColor = newColor;
-		    		}
-		    		else if(button.getName() == "Excitement Long Term"){
-		    			Constants.excitementltColor = newColor;
-		    		}
-		    }
+
+			public void colorChanged(Color newColor) {
+				if (button.getName() == "Meditation") {
+					Constants.meditationColor = newColor;
+				} else if (button.getName() == "Engagement") {
+					Constants.engagementColor = newColor;
+				} else if (button.getName() == "Frustation") {
+					Constants.frustationColor = newColor;
+				} else if (button.getName() == "Excitement Short Term") {
+					Constants.excitementstColor = newColor;
+				} else if (button.getName() == "Excitement Long Term") {
+					Constants.excitementltColor = newColor;
+				}
+			}
 		});
 	}
 }

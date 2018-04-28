@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Stroke;
 
+import javax.swing.JLabel;
+
 /**
 * Constants holds system-wide values that are shared by both the server
 * and the client. Most typically these are values for colors, fonts, etc.
@@ -48,6 +50,10 @@ public class Constants {
 	public static final Font BLINKINGTEXTFONT = new Font("Courier New", Font.BOLD, 20);
     public static volatile int DEFAULT_MIN = 0;
     public static volatile int DEFAULT_MAX = 100;
-    
+    public static final JLabel faceLabel = new JLabel("    Face Expression");
+    public static final JLabel timeLabel = new JLabel("    Time:");
+    public static final JLabel graphLabel = new JLabel("    Graph Charts");
+    public final static JLabel perfLabel = new JLabel("    Performance Matrix");
+    public static final JLabel colLabel = new JLabel("    Colors");
 
 }

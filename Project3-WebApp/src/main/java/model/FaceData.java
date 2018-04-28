@@ -1,7 +1,4 @@
-package utility;
-
-import model.FaceAffectiveData;
-import model.FaceExpressionData;
+package model;
 
 /**
  * Utility class containing the face data.

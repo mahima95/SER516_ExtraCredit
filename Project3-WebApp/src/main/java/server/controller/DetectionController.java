@@ -13,8 +13,8 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import model.FaceAffectiveData;
+import model.FaceData;
 import model.FaceExpressionData;
-import utility.FaceData;
 
 /**
  * Controller for the detection section of the server

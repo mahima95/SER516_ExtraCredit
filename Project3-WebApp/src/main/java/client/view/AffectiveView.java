@@ -1,12 +1,10 @@
 package client.view;
 
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.BorderFactory;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
@@ -14,18 +12,26 @@ import client.controller.ChangeColorController;
 import utility.Constants;
 
 /**
- * View for the Affective Section of the client
- * @SER516 Project3_Team03
+ * View for the Affective View of the client
+ * 
+ * @SER516 SER516_ExtraCredit
  * @Version 1.0
  */
 public class AffectiveView extends JPanel {
-	
+
 	private static final long serialVersionUID = 1L;
 	private ColorSelectorButton meditationButton;
 	private ColorSelectorButton engagementButton;
 	private ColorSelectorButton excitementstButton;
 	private ColorSelectorButton frustationButton;
 	private ColorSelectorButton excitementltButton;
+	
+	/**
+	 * Initializes the Affective panel with the left, affective Graph and color panel
+	 * @param leftPanel
+	 * @param affectiveGraph
+	 * @param colPanel
+	 */
 
 	public AffectiveView(JPanel leftPanel, JPanel affectiveGraph, JPanel colPanel) {
 
@@ -84,18 +90,15 @@ public class AffectiveView extends JPanel {
 		new ChangeColorController(excitementltButton);
 		colPanel.add(excitementltButton, gridBagConstraints);
 
-
 		this.add(colPanel);
 
-		final JLabel perfLabel = new JLabel("    Performance Matrix");
-		perfLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
-		perfLabel.setBounds(0, 0, 350, 32);
-		this.add(perfLabel);
+		Constants.perfLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		Constants.perfLabel.setBounds(0, 0, 350, 32);
+		this.add(Constants.perfLabel);
 
-		final JLabel colLabel = new JLabel("    Colors");
-		colLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
-		colLabel.setBounds(350, 0, 343, 32);
-		this.add(colLabel);
+		Constants.colLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		Constants.colLabel.setBounds(350, 0, 343, 32);
+		this.add(Constants.colLabel);
 
 	}
 

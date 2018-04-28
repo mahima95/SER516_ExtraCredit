@@ -1,8 +1,8 @@
 package server.controller;
 
+import model.FaceData;
 import server.service.FaceServer;
 import server.view.DetectionPanel;
-import utility.FaceData;
 
 /**
  * Controller for sending multiple values in certain time durations

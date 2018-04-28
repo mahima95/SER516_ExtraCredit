@@ -11,8 +11,8 @@ import org.glassfish.tyrus.server.Server;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import model.FaceData;
 import server.ServerConsole;
-import utility.FaceData;
 
 /**
  * Class to establish web-socket connection with client and send the data to the client.
