@@ -1,5 +1,5 @@
 # SER516_ExtraCredit
-Implementing Design Patterns and Clean code in Project3_Team03
+Implementing a Server-Client application for Project3_Team03
 
 # Team Members
 Aanchal Mahajan- 1213094075
